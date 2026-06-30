@@ -15,8 +15,10 @@ const HERO_IMG =
 
 const NAV = [
   { label: 'Услуги', href: '#services' },
-  { label: 'Серии балконов', href: '#series' },
+  { label: 'Серии', href: '#series' },
   { label: 'Калькулятор', href: '#calc' },
+  { label: 'Как работаем', href: '#process' },
+  { label: 'Акции', href: '#discounts' },
   { label: 'Отзывы', href: '#reviews' },
   { label: 'Контакты', href: '#contacts' },
 ];
@@ -217,6 +219,90 @@ const HERO_SLIDES = [
   },
 ];
 
+const PROCESS_STEPS = [
+  {
+    step: '01',
+    title: 'Заявка за 1 минуту',
+    desc: 'Оставьте номер телефона на сайте или позвоните сами. Менеджер перезвонит в течение 15 минут, уточнит размеры и договорится о замере.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/0b5106ce-1a4d-4984-b28b-960310cf7a6d.jpg',
+    icon: 'Phone',
+    duration: '15 минут',
+  },
+  {
+    step: '02',
+    title: 'Бесплатный замер',
+    desc: 'Инженер приедет в удобное время, произведёт точные замеры, оценит состояние плиты и парапета, покажет образцы профилей и стеклопакетов.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/988a4f36-232d-4a91-ba50-770be29423d9.jpg',
+    icon: 'Ruler',
+    duration: '1–2 дня',
+  },
+  {
+    step: '03',
+    title: 'Точная смета и договор',
+    desc: 'Готовим детальную смету с фиксированной стоимостью. Подписываем договор с гарантиями, указанием сроков и штрафами за их нарушение.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/a5e7a9ce-6eee-47ff-9be6-9ca226365f7b.jpg',
+    icon: 'FileText',
+    duration: '1 день',
+  },
+  {
+    step: '04',
+    title: 'Производство и доставка',
+    desc: 'Изготавливаем конструкции на собственном производстве. Никаких посредников — точные размеры, строгий контроль качества каждого профиля.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/01fe541f-4166-4014-b27d-709e879d5acb.jpg',
+    icon: 'Factory',
+    duration: '5–7 дней',
+  },
+  {
+    step: '05',
+    title: 'Монтаж за 1 день',
+    desc: 'Бригада из 2–3 специалистов демонтирует старое остекление, устанавливает тёплый профиль, регулирует фурнитуру. Убираем за собой весь мусор.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/db4ed14f-a4bb-42f2-be9e-02b480454f8d.jpg',
+    icon: 'HardHat',
+    duration: '1 день',
+  },
+  {
+    step: '06',
+    title: 'Сдача и гарантия',
+    desc: 'Принимаете работу по акту. Выдаём гарантийный талон на 10 лет. В первый год — бесплатный сервис и регулировка фурнитуры по вашему звонку.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/42d873a8-b8c1-49ba-b7c5-17785ca10daf.jpg',
+    icon: 'ShieldCheck',
+    duration: 'Навсегда',
+  },
+];
+
+const DISCOUNTS = [
+  {
+    icon: 'Percent',
+    badge: 'Акция июля',
+    title: 'Скидка 10% при заказе до 31 июля',
+    desc: 'На любое тёплое остекление балкона или лоджии. Акция действует при подписании договора до конца месяца.',
+    cta: 'Записаться на замер',
+    color: 'from-accent to-orange-500',
+    deadline: 'Осталось мест: 6 из 10',
+    icon2: 'Flame',
+  },
+  {
+    icon: 'Gift',
+    badge: 'Подарок',
+    title: 'Утепление пола в подарок',
+    desc: 'При заказе серии «Уют» или «Зимний сад» — утепление пола пеноплексом 50 мм бесплатно. Экономия до 8 000 ₽.',
+    cta: 'Получить подарок',
+    color: 'from-primary to-sky',
+    deadline: 'До конца недели',
+    icon2: 'Clock',
+  },
+  {
+    icon: 'CreditCard',
+    badge: 'Рассрочка',
+    title: 'Рассрочка 0% на 12 месяцев',
+    desc: 'Сделайте балкон сейчас — платите потом. Одобрение за 5 минут онлайн, только паспорт. Без переплат и скрытых комиссий.',
+    cta: 'Оформить рассрочку',
+    color: 'from-green-600 to-primary',
+    deadline: 'Постоянное предложение',
+    icon2: 'BadgeCheck',
+  },
+];
+
 const SERIES_PRESETS = [
   { seriesId: 1, label: 'Уют',        icon: 'Sofa',        area: 8,  profile: 0, extras: ['utep'] },
   { seriesId: 2, label: 'Кабинет',    icon: 'Monitor',     area: 6,  profile: 3, extras: ['floor'] },
@@ -233,9 +319,25 @@ const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSeries, setActiveSeries] = useState<number | null>(null);
   const [heroSlide, setHeroSlide] = useState(0);
+  const [processSlide, setProcessSlide] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({ h: 23, m: 47, s: 12 });
 
   useEffect(() => {
     const t = setInterval(() => setHeroSlide((p) => (p + 1) % HERO_SLIDES.length), 4000);
+    return () => clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setTimeLeft((prev) => {
+        let { h, m, s } = prev;
+        s--;
+        if (s < 0) { s = 59; m--; }
+        if (m < 0) { m = 59; h--; }
+        if (h < 0) { h = 23; m = 59; s = 59; }
+        return { h, m, s };
+      });
+    }, 1000);
     return () => clearInterval(t);
   }, []);
 
@@ -479,6 +581,64 @@ const Index = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed">{a.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === WHY TEXT BLOCK (AIDA: Interest) === */}
+      <section className="py-14 sm:py-20">
+        <div className="container grid lg:grid-cols-2 gap-10 items-center">
+          <div className="relative rounded-3xl overflow-hidden hover-lift">
+            <img
+              src="https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/d33b75ee-1aae-409e-a432-6e67d5f3d10a.jpg"
+              alt="Уютный тёплый балкон зимой"
+              className="w-full object-cover aspect-[4/3]"
+            />
+            <div className="absolute bottom-4 left-4 glass rounded-2xl px-5 py-3 max-w-xs">
+              <div className="text-xs text-muted-foreground mb-0.5">Реальный отзыв клиента</div>
+              <div className="text-sm font-semibold">«Зимой пью кофе на балконе в майке — не верила, что так бывает»</div>
+              <div className="text-xs text-primary font-medium mt-1">— Марина, Приморский р-н</div>
+            </div>
+          </div>
+          <div>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky/15 text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-4">
+              Почему это важно
+            </span>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-5">
+              Холодный балкон — это не просто неудобно. Это потеря 15–20% тепла в квартире
+            </h2>
+            <div className="space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <p>
+                Большинство петербургских балконов застеклены тонким алюминиевым профилем 60–80-х годов.
+                Он не держит тепло от слова совсем: при −15°C на улице на таком балконе будет −10°C.
+                Это прямые потери тепла через стену и дверь, которые вы оплачиваете каждый месяц.
+              </p>
+              <p>
+                Замена на тёплый ПВХ-профиль с двухкамерным стеклопакетом решает задачу радикально.
+                Температура на балконе поднимается до +18–22°C без дополнительного отопления —
+                только за счёт тепла из квартиры. Балкон перестаёт быть «дырой в стене» и становится
+                полноценным жилым пространством.
+              </p>
+              <p>
+                При этом внешний вид дома не меняется: мы подбираем цвет и расстекловку под
+                существующий фасад, так что согласование в большинстве случаев не требуется.
+              </p>
+            </div>
+            <div className="mt-7 grid grid-cols-3 gap-3">
+              {[
+                { n: '-40%', t: 'теплопотерь через балкон' },
+                { n: '+1', t: 'комната в квартире' },
+                { n: '1 день', t: 'монтаж под ключ' },
+              ].map((s) => (
+                <div key={s.t} className="bg-secondary/60 rounded-2xl p-4 text-center">
+                  <div className="font-display text-xl sm:text-2xl font-bold text-primary">{s.n}</div>
+                  <div className="text-xs text-muted-foreground mt-1 leading-tight">{s.t}</div>
+                </div>
+              ))}
+            </div>
+            <Button asChild className="mt-7 rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange h-12 px-8">
+              <a href="#calc">Рассчитать стоимость для моего балкона</a>
+            </Button>
           </div>
         </div>
       </section>
@@ -844,6 +1004,91 @@ const Index = () => {
         </div>
       </section>
 
+      {/* === PROCESS CAROUSEL (4U: Useful) === */}
+      <section id="process" className="py-14 sm:py-20">
+        <div className="container">
+          <SectionTitle eyebrow="Как мы работаем" title="Процесс от заявки до гарантии" />
+          <p className="text-center text-muted-foreground mt-3 mb-10 text-sm sm:text-base max-w-xl mx-auto">
+            Прозрачно и предсказуемо — 6 шагов, никаких сюрпризов
+          </p>
+
+          {/* Шаги-навигация */}
+          <div className="flex gap-2 overflow-x-auto pb-2 mb-6 scrollbar-hide">
+            {PROCESS_STEPS.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => setProcessSlide(i)}
+                className={`shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold border-2 transition-all ${
+                  processSlide === i
+                    ? 'bg-primary border-primary text-white shadow-glow-blue'
+                    : 'border-border text-muted-foreground hover:border-primary bg-card'
+                }`}
+              >
+                <span className="font-display">{s.step}</span>
+                <span className="hidden sm:inline">{s.title}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Главная карточка шага */}
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-10 bg-card border border-border rounded-3xl overflow-hidden">
+            <div className="relative">
+              <img
+                src={PROCESS_STEPS[processSlide].img}
+                alt={PROCESS_STEPS[processSlide].title}
+                className="w-full h-64 md:h-full object-cover"
+              />
+              <div className="absolute top-4 left-4 w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center font-display text-2xl font-bold shadow-glow-blue">
+                {PROCESS_STEPS[processSlide].step}
+              </div>
+            </div>
+            <div className="p-6 sm:p-8 flex flex-col justify-center">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="grid place-items-center w-9 h-9 rounded-xl bg-accent/15 text-accent">
+                  <Icon name={PROCESS_STEPS[processSlide].icon} size={18} />
+                </span>
+                <span className="text-sm font-semibold text-accent">{PROCESS_STEPS[processSlide].duration}</span>
+              </div>
+              <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4">
+                {PROCESS_STEPS[processSlide].title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                {PROCESS_STEPS[processSlide].desc}
+              </p>
+
+              {/* Мини-прогресс */}
+              <div className="flex items-center gap-2 mb-6">
+                {PROCESS_STEPS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setProcessSlide(i)}
+                    className={`h-2 rounded-full transition-all ${i === processSlide ? 'bg-primary w-8' : 'bg-border w-4'}`}
+                  />
+                ))}
+              </div>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setProcessSlide((p) => (p - 1 + PROCESS_STEPS.length) % PROCESS_STEPS.length)}
+                  className="w-11 h-11 rounded-xl border-2 border-border flex items-center justify-center hover:border-primary hover:text-primary transition-all"
+                >
+                  <Icon name="ChevronLeft" size={20} />
+                </button>
+                <button
+                  onClick={() => setProcessSlide((p) => (p + 1) % PROCESS_STEPS.length)}
+                  className="w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center hover:bg-accent transition-all shadow-glow-blue"
+                >
+                  <Icon name="ChevronRight" size={20} />
+                </button>
+                <Button asChild className="ml-auto rounded-xl bg-accent hover:bg-primary text-white shadow-glow-orange">
+                  <a href="#consult">Начать с шага 1</a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* === PORTFOLIO === */}
       <section id="portfolio" className="py-14 sm:py-20">
         <div className="container">
@@ -990,6 +1235,90 @@ const Index = () => {
             <Button asChild variant="outline" className="rounded-full border-primary text-primary hover:bg-primary hover:text-white h-11 px-7">
               <a href="#consult">Хочу так же — получить смету</a>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* === DISCOUNTS (4U: Urgent + Unique) === */}
+      <section id="discounts" className="py-14 sm:py-20 bg-secondary/40">
+        <div className="container">
+          <SectionTitle eyebrow="Специальные предложения" title="Акции и скидки" />
+
+          {/* Таймер */}
+          <div className="flex justify-center mt-5 mb-8">
+            <div className="inline-flex items-center gap-3 bg-primary text-white rounded-2xl px-6 py-3 shadow-glow-blue">
+              <Icon name="Timer" size={20} className="text-accent" />
+              <span className="text-sm font-medium">Акция июля заканчивается через:</span>
+              <div className="flex items-center gap-1 font-display text-xl font-bold">
+                <span className="bg-white/20 rounded-lg px-2 py-0.5 min-w-[2.5rem] text-center">{String(timeLeft.h).padStart(2,'0')}</span>
+                <span>:</span>
+                <span className="bg-white/20 rounded-lg px-2 py-0.5 min-w-[2.5rem] text-center">{String(timeLeft.m).padStart(2,'0')}</span>
+                <span>:</span>
+                <span className="bg-white/20 rounded-lg px-2 py-0.5 min-w-[2.5rem] text-center">{String(timeLeft.s).padStart(2,'0')}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Карточки акций */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {DISCOUNTS.map((d) => (
+              <div key={d.title} className={`relative rounded-3xl bg-gradient-to-br ${d.color} text-white overflow-hidden hover-lift`}>
+                {/* Декор */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+
+                <div className="relative p-6 sm:p-7 flex flex-col h-full">
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="grid place-items-center w-12 h-12 rounded-2xl bg-white/20">
+                      <Icon name={d.icon} size={22} />
+                    </span>
+                    <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-bold">
+                      {d.badge}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl font-bold mb-3 leading-tight">{d.title}</h3>
+                  <p className="text-white/85 text-sm leading-relaxed flex-1 mb-5">{d.desc}</p>
+
+                  <div className="flex items-center gap-2 mb-4 text-xs font-semibold">
+                    <Icon name={d.icon2} size={14} className="text-white/80" />
+                    <span className="text-white/80">{d.deadline}</span>
+                  </div>
+
+                  <Button asChild className="w-full rounded-xl bg-white text-foreground hover:bg-white/90 font-semibold h-11">
+                    <a href="#consult">{d.cta}</a>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Фото + CTA-блок */}
+          <div className="mt-10 grid lg:grid-cols-2 gap-6 bg-card border border-border rounded-3xl overflow-hidden">
+            <img
+              src="https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/42d873a8-b8c1-49ba-b7c5-17785ca10daf.jpg"
+              alt="Счастливая семья на тёплом балконе"
+              className="w-full h-64 lg:h-auto object-cover"
+            />
+            <div className="p-7 sm:p-10 flex flex-col justify-center">
+              <span className="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full bg-accent/15 text-accent text-sm font-semibold mb-4">
+                <Icon name="Flame" size={15} /> Горячее предложение
+              </span>
+              <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4 leading-tight">
+                Закажите замер сегодня — получите скидку 10% и подарок
+              </h3>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-6">
+                Только в июле: при подписании договора в день замера вы получаете скидку 10% на всю стоимость
+                работ и утепление пола в подарок. Акция ограничена — осталось <strong className="text-foreground">6 мест</strong> в этом месяце.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button asChild size="lg" className="rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange h-12 px-7">
+                  <a href="#consult">Записаться на замер со скидкой</a>
+                </Button>
+                <a href="tel:+78120000000" className="flex items-center justify-center gap-2 h-12 px-5 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all">
+                  <Icon name="Phone" size={17} /> Позвонить
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
