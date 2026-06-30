@@ -45,6 +45,7 @@ const PROFILES = [
   { name: 'VEKA Softline 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 5 900 ₽/м²' },
   { name: 'Rehau Blitz 60', cameras: '3 камеры', glass: 'Однокамерный 32 мм', warm: '★★★★☆', price: 'от 4 900 ₽/м²' },
   { name: 'KBE Эксперт 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 5 400 ₽/м²' },
+  { name: 'Brusbox Super 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 5 200 ₽/м²' },
 ];
 
 const REVIEWS = [
@@ -67,7 +68,7 @@ const Index = () => {
   const [profile, setProfile] = useState(1);
   const [extras, setExtras] = useState<string[]>([]);
 
-  const profilePrices = [5900, 4900, 5400];
+  const profilePrices = [5900, 4900, 5400, 5200];
   const extraOptions = [
     { id: 'utep', label: 'Утепление и отделка', price: 3200 },
     { id: 'floor', label: 'Тёплый пол', price: 1800 },
@@ -249,7 +250,7 @@ const Index = () => {
             <Slider value={area} onValueChange={setArea} min={3} max={30} step={1} className="mb-6" />
 
             <label className="block font-semibold mb-2">Профиль</label>
-            <div className="grid grid-cols-3 gap-2 mb-6">
+            <div className="grid grid-cols-2 gap-2 mb-6">
               {PROFILES.map((p, i) => (
                 <button
                   key={p.name}
