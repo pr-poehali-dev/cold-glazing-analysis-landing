@@ -106,7 +106,7 @@ const Index = () => {
               <Icon name="Phone" size={16} className="text-primary" />
               +7 (812) 000-00-00
             </a>
-            <Button asChild size="sm" className="rounded-full">
+            <Button asChild size="sm" className="rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange">
               <a href="#consult">Консультация</a>
             </Button>
           </div>
@@ -117,22 +117,22 @@ const Index = () => {
       <section id="top" className="relative pt-28 pb-20 grid-bg">
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-5">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-5">
               <Icon name="MapPin" size={15} /> Санкт-Петербург и Лен. область
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] uppercase">
-              Меняем <span className="text-accent">холодное</span> остекление
-              на <span className="text-gradient">тёплое</span>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08]">
+              Меняем <span className="text-sky">холодное</span> остекление
+              на <span className="text-accent">тёплое</span>
             </h1>
             <p className="mt-5 text-lg text-muted-foreground max-w-lg">
               Превращаем продуваемый балкон в тёплую комнату за 1 день. Профили VEKA и Rehau,
               гарантия 10 лет, рассрочка 0%. Без изменения фасада.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button asChild size="lg" className="rounded-full text-base h-14 px-8 hover-lift">
+              <Button asChild size="lg" className="rounded-full text-base h-14 px-8 bg-accent hover:bg-primary text-white shadow-glow-orange hover:shadow-glow-blue">
                 <a href="#calc"><Icon name="Calculator" size={20} className="mr-2" /> Рассчитать смету</a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full text-base h-14 px-8">
+              <Button asChild size="lg" variant="outline" className="rounded-full text-base h-14 px-8 border-primary text-primary hover:bg-primary hover:text-white">
                 <a href="#consult">Бесплатный замер</a>
               </Button>
             </div>
@@ -236,7 +236,7 @@ const Index = () => {
       </section>
 
       {/* Calculator + Consult */}
-      <section id="calc" className="py-20 bg-gradient-to-br from-primary to-orange-600 text-white">
+      <section id="calc" className="py-20 bg-gradient-to-br from-primary via-primary to-sky text-white">
         <div className="container grid lg:grid-cols-2 gap-10">
           {/* Calc */}
           <div className="bg-white text-foreground rounded-3xl p-8 shadow-2xl animate-fade-in">
@@ -297,7 +297,7 @@ const Index = () => {
             <span className="inline-flex w-fit items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 font-semibold text-sm mb-4">
               <Icon name="Headset" size={16} /> Онлайн-консультация
             </span>
-            <h3 className="font-display text-3xl sm:text-4xl font-bold mb-4 uppercase leading-tight">
+            <h3 className="font-display text-3xl sm:text-4xl font-bold mb-4 leading-tight">
               Эксперт рассчитает смету бесплатно
             </h3>
             <p className="text-white/80 mb-7 max-w-md">
@@ -307,7 +307,7 @@ const Index = () => {
             <form className="space-y-3 max-w-md" onSubmit={(e) => e.preventDefault()}>
               <Input placeholder="Ваше имя" className="bg-white text-foreground border-0 h-12 rounded-xl" />
               <Input placeholder="Телефон" type="tel" className="bg-white text-foreground border-0 h-12 rounded-xl" />
-              <Button size="lg" className="w-full rounded-xl bg-accent hover:bg-accent/90 text-white h-12 font-semibold">
+              <Button size="lg" className="w-full rounded-xl bg-accent hover:bg-white hover:text-primary text-white h-12 font-semibold shadow-glow-orange">
                 Получить консультацию
               </Button>
             </form>
@@ -428,7 +428,7 @@ const Index = () => {
               <Input placeholder="Ваше имя" className="h-12 rounded-xl" />
               <Input placeholder="Телефон" type="tel" className="h-12 rounded-xl" />
               <Input placeholder="Адрес (район, ЖК)" className="h-12 rounded-xl" />
-              <Button size="lg" className="w-full h-12 rounded-xl font-semibold">Вызвать замерщика</Button>
+              <Button size="lg" className="w-full h-12 rounded-xl font-semibold bg-accent hover:bg-primary text-white shadow-glow-orange hover:shadow-glow-blue">Вызвать замерщика</Button>
             </form>
           </div>
         </div>
@@ -458,10 +458,10 @@ const SectionTitle = ({
   align?: 'center' | 'left';
 }) => (
   <div className={align === 'center' ? 'text-center' : 'text-left'}>
-    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-sm uppercase tracking-wide">
+    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky/15 text-primary font-semibold text-sm uppercase tracking-wide">
       {eyebrow}
     </span>
-    <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase mt-4 leading-tight">
+    <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-4 leading-tight">
       {title}
     </h2>
   </div>
