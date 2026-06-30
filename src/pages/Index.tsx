@@ -310,6 +310,18 @@ const SERIES_PRESETS = [
   { seriesId: 4, label: 'Эконом+',    icon: 'Banknote',    area: 4,  profile: 1, extras: [] },
 ];
 
+const API_URL = 'https://functions.poehali.dev/ad423de6-73be-4688-ad8f-ec9eaa644826';
+
+async function sendLead(data: { name?: string; phone: string; address?: string; source: string; series?: string }) {
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error('network error');
+  return res.json();
+}
+
 const Index = () => {
   const [area, setArea] = useState([8]);
   const [profile, setProfile] = useState(1);
@@ -321,6 +333,35 @@ const Index = () => {
   const [heroSlide, setHeroSlide] = useState(0);
   const [processSlide, setProcessSlide] = useState(0);
   const [timeLeft, setTimeLeft] = useState({ h: 23, m: 47, s: 12 });
+
+  // Состояния форм
+  const [consultForm, setConsultForm] = useState({ name: '', phone: '' });
+  const [consultState, setConsultState] = useState<'idle'|'loading'|'ok'|'err'>('idle');
+
+  const [measureForm, setMeasureForm] = useState({ name: '', phone: '', address: '' });
+  const [measureState, setMeasureState] = useState<'idle'|'loading'|'ok'|'err'>('idle');
+
+  const handleConsult = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!consultForm.phone) return;
+    setConsultState('loading');
+    try {
+      await sendLead({ ...consultForm, source: 'Онлайн-консультация' });
+      setConsultState('ok');
+      setConsultForm({ name: '', phone: '' });
+    } catch { setConsultState('err'); }
+  };
+
+  const handleMeasure = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!measureForm.phone) return;
+    setMeasureState('loading');
+    try {
+      await sendLead({ ...measureForm, source: 'Бесплатный замер' });
+      setMeasureState('ok');
+      setMeasureForm({ name: '', phone: '', address: '' });
+    } catch { setMeasureState('err'); }
+  };
 
   useEffect(() => {
     const t = setInterval(() => setHeroSlide((p) => (p + 1) % HERO_SLIDES.length), 4000);
@@ -806,13 +847,44 @@ const Index = () => {
               Оставьте контакты — инженер свяжется в течение 15 минут и подготовит
               индивидуальный расчёт под ваш балкон.
             </p>
-            <form className="space-y-3 max-w-md w-full" onSubmit={(e) => e.preventDefault()}>
-              <Input placeholder="Ваше имя" className="bg-white text-foreground border-0 h-12 rounded-xl" />
-              <Input placeholder="Телефон" type="tel" className="bg-white text-foreground border-0 h-12 rounded-xl" />
-              <Button size="lg" className="w-full rounded-xl bg-accent hover:bg-white hover:text-primary text-white h-12 font-semibold shadow-glow-orange">
-                Получить консультацию
-              </Button>
-            </form>
+            {consultState === 'ok' ? (
+              <div className="max-w-md w-full rounded-2xl bg-white/15 border border-white/30 p-6 flex flex-col items-center gap-3 text-center">
+                <span className="grid place-items-center w-14 h-14 rounded-full bg-accent text-white shadow-glow-orange">
+                  <Icon name="CheckCircle2" size={28} />
+                </span>
+                <div className="font-display text-xl font-bold">Заявка принята!</div>
+                <p className="text-white/80 text-sm">Инженер свяжется с вами в течение 15 минут.</p>
+                <button onClick={() => setConsultState('idle')} className="text-xs text-white/60 underline mt-1">Отправить ещё</button>
+              </div>
+            ) : (
+              <form className="space-y-3 max-w-md w-full" onSubmit={handleConsult}>
+                <Input
+                  placeholder="Ваше имя"
+                  value={consultForm.name}
+                  onChange={(e) => setConsultForm(f => ({ ...f, name: e.target.value }))}
+                  className="bg-white text-foreground border-0 h-12 rounded-xl"
+                />
+                <Input
+                  placeholder="Телефон *"
+                  type="tel"
+                  required
+                  value={consultForm.phone}
+                  onChange={(e) => setConsultForm(f => ({ ...f, phone: e.target.value }))}
+                  className="bg-white text-foreground border-0 h-12 rounded-xl"
+                />
+                <Button
+                  size="lg"
+                  type="submit"
+                  disabled={consultState === 'loading'}
+                  className="w-full rounded-xl bg-accent hover:bg-white hover:text-primary text-white h-12 font-semibold shadow-glow-orange disabled:opacity-60"
+                >
+                  {consultState === 'loading' ? (
+                    <span className="flex items-center gap-2"><Icon name="Loader2" size={18} className="animate-spin" /> Отправка...</span>
+                  ) : 'Получить консультацию'}
+                </Button>
+                {consultState === 'err' && <p className="text-red-300 text-xs text-center">Ошибка отправки. Позвоните нам напрямую.</p>}
+              </form>
+            )}
             <p className="text-xs text-white/60 mt-3 max-w-md">
               Нажимая кнопку, вы соглашаетесь с{' '}
               <a href="#contacts" className="underline underline-offset-2 hover:text-white/90">
@@ -1421,14 +1493,50 @@ const Index = () => {
           <div className="bg-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-border shadow-xl">
             <h3 className="font-display text-xl sm:text-2xl font-bold mb-2">Записаться на бесплатный замер</h3>
             <p className="text-muted-foreground text-sm mb-5 sm:mb-6">Инженер приедет в удобное время с образцами профилей.</p>
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-              <Input placeholder="Ваше имя" className="h-12 rounded-xl" />
-              <Input placeholder="Телефон" type="tel" className="h-12 rounded-xl" />
-              <Input placeholder="Адрес (район, ЖК)" className="h-12 rounded-xl" />
-              <Button size="lg" className="w-full h-12 rounded-xl font-semibold bg-accent hover:bg-primary text-white shadow-glow-orange hover:shadow-glow-blue">
-                Вызвать замерщика
-              </Button>
-            </form>
+            {measureState === 'ok' ? (
+              <div className="rounded-2xl bg-primary/10 border border-primary/20 p-6 flex flex-col items-center gap-3 text-center">
+                <span className="grid place-items-center w-14 h-14 rounded-full bg-accent text-white shadow-glow-orange">
+                  <Icon name="CheckCircle2" size={28} />
+                </span>
+                <div className="font-display text-xl font-bold">Замер записан!</div>
+                <p className="text-muted-foreground text-sm">Мы перезвоним вам в ближайшее время, чтобы уточнить удобное время.</p>
+                <button onClick={() => setMeasureState('idle')} className="text-xs text-muted-foreground underline mt-1">Отправить ещё</button>
+              </div>
+            ) : (
+              <form className="space-y-3" onSubmit={handleMeasure}>
+                <Input
+                  placeholder="Ваше имя"
+                  value={measureForm.name}
+                  onChange={(e) => setMeasureForm(f => ({ ...f, name: e.target.value }))}
+                  className="h-12 rounded-xl"
+                />
+                <Input
+                  placeholder="Телефон *"
+                  type="tel"
+                  required
+                  value={measureForm.phone}
+                  onChange={(e) => setMeasureForm(f => ({ ...f, phone: e.target.value }))}
+                  className="h-12 rounded-xl"
+                />
+                <Input
+                  placeholder="Адрес (район, ЖК)"
+                  value={measureForm.address}
+                  onChange={(e) => setMeasureForm(f => ({ ...f, address: e.target.value }))}
+                  className="h-12 rounded-xl"
+                />
+                <Button
+                  size="lg"
+                  type="submit"
+                  disabled={measureState === 'loading'}
+                  className="w-full h-12 rounded-xl font-semibold bg-accent hover:bg-primary text-white shadow-glow-orange hover:shadow-glow-blue disabled:opacity-60"
+                >
+                  {measureState === 'loading' ? (
+                    <span className="flex items-center gap-2"><Icon name="Loader2" size={18} className="animate-spin" /> Отправка...</span>
+                  ) : 'Вызвать замерщика'}
+                </Button>
+                {measureState === 'err' && <p className="text-red-500 text-xs text-center">Ошибка. Позвоните нам: +7 (812) 000-00-00</p>}
+              </form>
+            )}
             <p className="text-xs text-muted-foreground mt-3">
               Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.
             </p>
