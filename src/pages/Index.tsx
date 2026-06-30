@@ -538,9 +538,12 @@ const Index = () => {
                 {total.toLocaleString('ru-RU')} ₽
               </span>
             </div>
-            <p className="text-xs text-muted-foreground mt-3">
-              Точную смету рассчитает инженер на бесплатном замере.
-            </p>
+            <div className="mt-3 flex items-start gap-2 rounded-xl bg-secondary/70 px-3 py-2.5">
+              <Icon name="Info" size={15} className="text-primary shrink-0 mt-0.5" />
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Цены на сайте — предварительные и могут измениться после точного замера. Окончательная стоимость фиксируется в договоре.
+              </p>
+            </div>
           </div>
 
           {/* Consult form */}
