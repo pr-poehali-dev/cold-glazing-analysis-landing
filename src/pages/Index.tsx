@@ -18,8 +18,8 @@ const PORTFOLIO_IMG =
 const NAV = [
   { label: 'Преимущества', href: '#advantages' },
   { label: 'Услуги', href: '#services' },
+  { label: 'Серии балконов', href: '#series' },
   { label: 'Калькулятор', href: '#calc' },
-  { label: 'Портфолио', href: '#portfolio' },
   { label: 'Отзывы', href: '#reviews' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Контакты', href: '#contacts' },
@@ -39,6 +39,53 @@ const SERVICES = [
   { icon: 'Home', title: 'Тёплое остекление лоджий', price: 'от 5 400 ₽/м²', text: 'Профиль VEKA/Rehau 70 мм, энергосберегающее стекло, тёплый отлив и подоконник.' },
   { icon: 'Layers', title: 'Утепление и отделка «под ключ»', price: 'от 3 200 ₽/м²', text: 'Утепление стен, пола и потолка, отделка вагонкой или панелями, тёплый пол.' },
   { icon: 'Sun', title: 'Объединение с комнатой', price: 'по проекту', text: 'Демонтаж блока, вынос радиатора, тёплый пол — балкон становится частью квартиры.' },
+];
+
+const BALCONY_SERIES = [
+  {
+    id: 1,
+    name: 'Серия «Уют»',
+    tag: 'Самая популярная',
+    desc: 'Тёплое остекление + утепление пола и стен + вагонка под дерево. Идеально для зоны отдыха или зимнего сада.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/95838ce2-f079-429a-a058-8d29e3d09802.jpg',
+    profile: 'VEKA Softline 70',
+    area: '6–10 м²',
+    price: 'от 58 000 ₽',
+    includes: ['Тёплое остекление', 'Утепление стен и пола', 'Вагонка под дерево', 'Светодиодная подсветка'],
+  },
+  {
+    id: 2,
+    name: 'Серия «Кабинет»',
+    tag: 'Для работы из дома',
+    desc: 'Максимум света и тишины. Панорамные окна, электрообогрев пола, шумопоглощающий стеклопакет.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/4e3e6b72-c905-4811-936e-d51f60935a78.jpg',
+    profile: 'Brusbox Super 70',
+    area: '5–8 м²',
+    price: 'от 64 000 ₽',
+    includes: ['Тёплое остекление', 'Тёплый пол электро', 'Панели ПВХ белые', 'Розетки и освещение'],
+  },
+  {
+    id: 3,
+    name: 'Серия «Зимний сад»',
+    tag: 'Для любителей растений',
+    desc: 'Лоджия превращается в оранжерею: тёплый профиль, усиленный стеклопакет с UV-защитой, влагостойкая отделка.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/26e6adb7-79d4-4970-b771-e7db4e768713.jpg',
+    profile: 'KBE Эксперт 70',
+    area: '8–15 м²',
+    price: 'от 72 000 ₽',
+    includes: ['Тёплое остекление UV-защита', 'Влагостойкая отделка', 'Система полива', 'Вентиляционный клапан'],
+  },
+  {
+    id: 4,
+    name: 'Серия «Эконом+»',
+    tag: 'Выгодный старт',
+    desc: 'Замена холодного алюминия на тёплый профиль без отделки. Быстро, честно, с гарантией.',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/54e5a158-7dd5-457e-a358-c020981553d6.jpg',
+    profile: 'Rehau Blitz 60',
+    area: '3–6 м²',
+    price: 'от 29 000 ₽',
+    includes: ['Тёплое остекление', 'Демонтаж алюминия', 'Уплотнители и фурнитура', 'Вывоз мусора'],
+  },
 ];
 
 const PROFILES = [
@@ -67,6 +114,7 @@ const Index = () => {
   const [area, setArea] = useState([8]);
   const [profile, setProfile] = useState(1);
   const [extras, setExtras] = useState<string[]>([]);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const profilePrices = [5900, 4900, 5400, 5200];
   const extraOptions = [
@@ -315,6 +363,132 @@ const Index = () => {
             <p className="text-xs text-white/60 mt-3 max-w-md">
               Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Balcony Series Carousel */}
+      <section id="series" className="py-20 bg-secondary/40">
+        <div className="container">
+          <SectionTitle eyebrow="Готовые решения" title="Популярные серии балконов" />
+          <p className="text-center text-muted-foreground mt-3 mb-10 max-w-xl mx-auto">
+            Подобрали самые востребованные комплектации — выбери подходящую и получи смету за 1 клик
+          </p>
+
+          {/* Cards row */}
+          <div className="relative">
+            {/* Desktop: все 4 карточки */}
+            <div className="hidden lg:grid grid-cols-4 gap-5">
+              {BALCONY_SERIES.map((s, i) => (
+                <div
+                  key={s.id}
+                  onClick={() => setActiveSlide(i)}
+                  className={`cursor-pointer rounded-2xl overflow-hidden border-2 transition-all duration-300 hover-lift ${
+                    activeSlide === i ? 'border-accent shadow-glow-orange' : 'border-border'
+                  }`}
+                >
+                  <div className="relative">
+                    <img src={s.img} alt={s.name} className="w-full aspect-[4/3] object-cover" />
+                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-accent text-white text-xs font-semibold shadow-glow-orange">
+                      {s.tag}
+                    </span>
+                  </div>
+                  <div className="bg-card p-5">
+                    <h3 className="font-display text-lg font-bold mb-1">{s.name}</h3>
+                    <p className="text-xs text-muted-foreground mb-3 leading-relaxed line-clamp-2">{s.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="font-display text-xl font-bold text-primary">{s.price}</span>
+                      <span className="text-xs text-muted-foreground">{s.area}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile: одна карточка + стрелки */}
+            <div className="lg:hidden">
+              <div className="rounded-2xl overflow-hidden border-2 border-accent shadow-glow-orange">
+                <div className="relative">
+                  <img
+                    src={BALCONY_SERIES[activeSlide].img}
+                    alt={BALCONY_SERIES[activeSlide].name}
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-accent text-white text-xs font-semibold">
+                    {BALCONY_SERIES[activeSlide].tag}
+                  </span>
+                </div>
+                <div className="bg-card p-5">
+                  <h3 className="font-display text-xl font-bold mb-1">{BALCONY_SERIES[activeSlide].name}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">{BALCONY_SERIES[activeSlide].desc}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="font-display text-2xl font-bold text-primary">{BALCONY_SERIES[activeSlide].price}</span>
+                    <span className="text-sm text-muted-foreground">{BALCONY_SERIES[activeSlide].area}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center gap-3 mt-4">
+                <button
+                  onClick={() => setActiveSlide((p) => (p - 1 + BALCONY_SERIES.length) % BALCONY_SERIES.length)}
+                  className="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                >
+                  <Icon name="ChevronLeft" size={20} />
+                </button>
+                {BALCONY_SERIES.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveSlide(i)}
+                    className={`w-3 h-3 rounded-full transition-all self-center ${i === activeSlide ? 'bg-accent w-6' : 'bg-border'}`}
+                  />
+                ))}
+                <button
+                  onClick={() => setActiveSlide((p) => (p + 1) % BALCONY_SERIES.length)}
+                  className="w-10 h-10 rounded-full border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                >
+                  <Icon name="ChevronRight" size={20} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Detail panel — показывает выбранную серию (desktop) */}
+          <div className="hidden lg:grid grid-cols-2 gap-8 mt-8 bg-card rounded-2xl border border-border p-8 items-center animate-fade-in">
+            <div>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-3">
+                {BALCONY_SERIES[activeSlide].tag}
+              </span>
+              <h3 className="font-display text-3xl font-bold mb-2">{BALCONY_SERIES[activeSlide].name}</h3>
+              <p className="text-muted-foreground mb-5">{BALCONY_SERIES[activeSlide].desc}</p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {[
+                  { label: 'Профиль', value: BALCONY_SERIES[activeSlide].profile },
+                  { label: 'Площадь', value: BALCONY_SERIES[activeSlide].area },
+                  { label: 'Стоимость', value: BALCONY_SERIES[activeSlide].price },
+                  { label: 'Срок монтажа', value: '1–3 дня' },
+                ].map((d) => (
+                  <div key={d.label} className="bg-secondary/60 rounded-xl px-4 py-3">
+                    <div className="text-xs text-muted-foreground">{d.label}</div>
+                    <div className="font-display font-bold text-primary">{d.value}</div>
+                  </div>
+                ))}
+              </div>
+              <Button asChild className="rounded-xl bg-accent hover:bg-primary text-white shadow-glow-orange hover:shadow-glow-blue">
+                <a href="#consult">Заказать эту серию</a>
+              </Button>
+            </div>
+            <div>
+              <div className="text-sm font-semibold mb-3 text-muted-foreground uppercase tracking-wide">Что входит:</div>
+              <ul className="space-y-2">
+                {BALCONY_SERIES[activeSlide].includes.map((item) => (
+                  <li key={item} className="flex items-center gap-3">
+                    <span className="grid place-items-center w-6 h-6 rounded-full bg-accent/15 text-accent shrink-0">
+                      <Icon name="Check" size={14} />
+                    </span>
+                    <span className="font-medium">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
