@@ -117,12 +117,27 @@ const TRUST_BADGES = [
   { icon: 'Users', label: '4 800+ клиентов в СПб' },
 ];
 
+const SERIES_PRESETS = [
+  { seriesId: 1, label: 'Уют',        icon: 'Sofa',        area: 8,  profile: 0, extras: ['utep'] },
+  { seriesId: 2, label: 'Кабинет',    icon: 'Monitor',     area: 6,  profile: 3, extras: ['floor'] },
+  { seriesId: 3, label: 'Зимний сад', icon: 'Flower2',     area: 10, profile: 2, extras: ['utep'] },
+  { seriesId: 4, label: 'Эконом+',    icon: 'Banknote',    area: 4,  profile: 1, extras: [] },
+];
+
 const Index = () => {
   const [area, setArea] = useState([8]);
   const [profile, setProfile] = useState(1);
   const [extras, setExtras] = useState<string[]>([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSeries, setActiveSeries] = useState<number | null>(null);
+
+  const applyPreset = (preset: typeof SERIES_PRESETS[0]) => {
+    setArea([preset.area]);
+    setProfile(preset.profile);
+    setExtras(preset.extras);
+    setActiveSeries(preset.seriesId);
+  };
 
   const profilePrices = [5900, 4900, 5400, 5200];
   const extraOptions = [
@@ -374,19 +389,58 @@ const Index = () => {
             <div className="flex items-center gap-2 text-primary font-display font-semibold mb-2 text-sm sm:text-base">
               <Icon name="Calculator" size={18} /> Калькулятор сметы
             </div>
-            <h3 className="font-display text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Узнайте стоимость за минуту</h3>
+            <h3 className="font-display text-xl sm:text-2xl font-bold mb-4">Узнайте стоимость за минуту</h3>
+
+            {/* Быстрый старт по сериям */}
+            <div className="mb-5 sm:mb-6">
+              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+                Быстрый старт — выберите серию:
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {SERIES_PRESETS.map((s) => (
+                  <button
+                    key={s.seriesId}
+                    onClick={() => applyPreset(s)}
+                    className={`flex items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-sm font-semibold transition-all text-left ${
+                      activeSeries === s.seriesId
+                        ? 'border-accent bg-accent/10 text-accent'
+                        : 'border-border hover:border-primary hover:text-primary text-muted-foreground'
+                    }`}
+                  >
+                    <Icon name={s.icon} size={16} className="shrink-0" />
+                    <span>«{s.label}»</span>
+                    {activeSeries === s.seriesId && (
+                      <Icon name="Check" size={14} className="ml-auto shrink-0" />
+                    )}
+                  </button>
+                ))}
+              </div>
+              {activeSeries && (
+                <div className="mt-2 flex items-center gap-1.5 text-xs text-accent font-medium">
+                  <Icon name="Zap" size={13} />
+                  Параметры серии «{SERIES_PRESETS.find(s => s.seriesId === activeSeries)?.label}» подставлены
+                </div>
+              )}
+            </div>
+
+            <div className="w-full h-px bg-border mb-5" />
 
             <label className="block font-semibold mb-2 text-sm sm:text-base">
               Площадь остекления: <span className="text-primary">{area[0]} м²</span>
             </label>
-            <Slider value={area} onValueChange={setArea} min={3} max={30} step={1} className="mb-5 sm:mb-6" />
+            <Slider
+              value={area}
+              onValueChange={(v) => { setArea(v); setActiveSeries(null); }}
+              min={3} max={30} step={1}
+              className="mb-5 sm:mb-6"
+            />
 
             <label className="block font-semibold mb-2 text-sm sm:text-base">Профиль</label>
             <div className="grid grid-cols-2 gap-2 mb-5 sm:mb-6">
               {PROFILES.map((p, i) => (
                 <button
                   key={p.name}
-                  onClick={() => setProfile(i)}
+                  onClick={() => { setProfile(i); setActiveSeries(null); }}
                   className={`rounded-xl border-2 px-2 py-2.5 text-xs font-semibold transition-all ${
                     profile === i ? 'border-primary bg-primary/10 text-primary' : 'border-border text-muted-foreground'
                   }`}
