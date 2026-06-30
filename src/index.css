@@ -141,3 +141,12 @@
     box-shadow: 0 4px 14px rgba(103, 202, 254, 0.5);
   }
 }
+
+@keyframes shimmer-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

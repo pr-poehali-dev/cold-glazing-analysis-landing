@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -176,10 +176,45 @@ const PORTFOLIO_ITEMS = [
 ];
 
 const TRUST_BADGES = [
-  { icon: 'Award', label: 'Официальный партнёр VEKA' },
   { icon: 'BadgeCheck', label: 'Сертифицированный монтаж' },
   { icon: 'Star', label: 'Рейтинг 4.9 на Яндекс.Картах' },
   { icon: 'Users', label: '4 800+ клиентов в СПб' },
+  { icon: 'ShieldCheck', label: 'Гарантия 10 лет' },
+];
+
+const HERO_SLIDES = [
+  {
+    profile: 'VEKA Softline 70',
+    badge: 'VEKA',
+    color: 'text-sky',
+    utp: 'Немецкое качество, 5 камер тепла — балкон держит +20°C при −30°C на улице',
+    tag: '5 камер · Двухкамерный стеклопакет',
+    icon: 'ThermometerSun',
+  },
+  {
+    profile: 'Rehau Blitz 60',
+    badge: 'REHAU',
+    color: 'text-accent',
+    utp: 'Оптимальное соотношение цены и тепла — замена холодного алюминия за 1 день',
+    tag: '3 камеры · Однокамерный стеклопакет',
+    icon: 'Zap',
+  },
+  {
+    profile: 'KBE Эксперт 70',
+    badge: 'KBE',
+    color: 'text-primary',
+    utp: 'Экспертный профиль для лоджий: UV-защита, энергосбережение A++ и шумоизоляция 42 дБ',
+    tag: '5 камер · Двухкамерный 40 мм',
+    icon: 'Layers',
+  },
+  {
+    profile: 'Brusbox Super 70',
+    badge: 'BRUSBOX',
+    color: 'text-green-600',
+    utp: 'Российское производство — короткие сроки и цена ниже европейских аналогов на 15%',
+    tag: '5 камер · Произведено в России',
+    icon: 'Factory',
+  },
 ];
 
 const SERIES_PRESETS = [
@@ -197,6 +232,12 @@ const Index = () => {
   const [portfolioSlide, setPortfolioSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSeries, setActiveSeries] = useState<number | null>(null);
+  const [heroSlide, setHeroSlide] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setHeroSlide((p) => (p + 1) % HERO_SLIDES.length), 4000);
+    return () => clearInterval(t);
+  }, []);
 
   const applyPreset = (preset: typeof SERIES_PRESETS[0]) => {
     setArea([preset.area]);
@@ -303,10 +344,57 @@ const Index = () => {
               Меняем <span className="text-sky">холодное</span> остекление
               на <span className="text-accent">тёплое</span>
             </h1>
-            <p className="mt-4 sm:mt-5 text-base sm:text-lg text-muted-foreground max-w-lg">
-              Превращаем продуваемый балкон в тёплую комнату за 1 день. Профили VEKA и Rehau,
-              гарантия 10 лет, рассрочка 0%. Без изменения фасада.
-            </p>
+
+            {/* УТП-слайдер по профилям */}
+            <div className="mt-5 sm:mt-6">
+              {/* Переключатели профилей */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {HERO_SLIDES.map((s, i) => (
+                  <button
+                    key={s.profile}
+                    onClick={() => setHeroSlide(i)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border-2 transition-all duration-300 ${
+                      heroSlide === i
+                        ? 'bg-primary border-primary text-white shadow-glow-blue'
+                        : 'border-border text-muted-foreground hover:border-primary hover:text-primary bg-card'
+                    }`}
+                  >
+                    <Icon name={s.icon} size={13} />
+                    {s.badge}
+                  </button>
+                ))}
+              </div>
+
+              {/* Текст УТП */}
+              <div className="relative overflow-hidden rounded-2xl border border-border bg-card px-5 py-4 min-h-[88px] flex flex-col justify-center">
+                {HERO_SLIDES.map((s, i) => (
+                  <div
+                    key={s.profile}
+                    className={`transition-all duration-500 ${
+                      heroSlide === i ? 'opacity-100 translate-y-0' : 'opacity-0 absolute translate-y-3 pointer-events-none'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <Icon name={s.icon} size={16} className={s.color} />
+                      <span className={`font-display font-bold text-sm ${s.color}`}>{s.profile}</span>
+                      <span className="text-xs text-muted-foreground">· {s.tag}</span>
+                    </div>
+                    <p className="text-sm sm:text-base text-foreground leading-snug font-medium">
+                      {s.utp}
+                    </p>
+                  </div>
+                ))}
+
+                {/* Прогресс-полоска */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border rounded-full overflow-hidden">
+                  <div
+                    key={heroSlide}
+                    className="h-full bg-primary rounded-full"
+                    style={{ animation: 'shimmer-progress 4s linear forwards' }}
+                  />
+                </div>
+              </div>
+            </div>
 
             {/* CTA buttons */}
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3">
