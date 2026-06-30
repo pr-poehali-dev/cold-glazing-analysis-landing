@@ -12,8 +12,6 @@ import {
 
 const HERO_IMG =
   'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/54e5a158-7dd5-457e-a358-c020981553d6.jpg';
-const PORTFOLIO_IMG =
-  'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/e63e0ee3-18dd-4fb2-ad22-6d9cce226213.jpg';
 
 const NAV = [
   { label: 'Преимущества', href: '#advantages' },
@@ -110,6 +108,75 @@ const FAQ = [
   { q: 'Можно ли оформить рассрочку?', a: 'Да, рассрочка 0% до 12 месяцев без первоначального взноса. Одобрение онлайн за 5 минут, нужен только паспорт.' },
 ];
 
+const PORTFOLIO_ITEMS = [
+  {
+    id: 1,
+    jk: 'ЖК «Северная Долина»',
+    district: 'Выборгский р-н',
+    area: '9 м²',
+    type: 'Лоджия',
+    work: 'Замена алюминия на VEKA 70 + утепление',
+    profile: 'VEKA Softline 70',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/e63e0ee3-18dd-4fb2-ad22-6d9cce226213.jpg',
+    tag: 'До / После',
+  },
+  {
+    id: 2,
+    jk: 'ЖК «Юнтолово»',
+    district: 'Приморский р-н',
+    area: '7 м²',
+    type: 'Балкон',
+    work: 'Тёплое остекление + зона отдыха',
+    profile: 'VEKA Softline 70',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/95838ce2-f079-429a-a058-8d29e3d09802.jpg',
+    tag: 'Серия «Уют»',
+  },
+  {
+    id: 3,
+    jk: 'ЖК «Кудрово Парк»',
+    district: 'Кудрово',
+    area: '6 м²',
+    type: 'Балкон',
+    work: 'Кабинет с тёплым полом и розетками',
+    profile: 'Brusbox Super 70',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/4e3e6b72-c905-4811-936e-d51f60935a78.jpg',
+    tag: 'Серия «Кабинет»',
+  },
+  {
+    id: 4,
+    jk: 'ЖК «Новое Горелово»',
+    district: 'Красносельский р-н',
+    area: '5 м²',
+    type: 'Балкон',
+    work: 'Хозяйственная зона, влагостойкая отделка',
+    profile: 'Rehau Blitz 60',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/38a3ebe7-9c0e-4c0b-abaf-aeb9829e52d1.jpg',
+    tag: 'Серия «Эконом+»',
+  },
+  {
+    id: 5,
+    jk: 'ЖК «Мурино Парк»',
+    district: 'Мурино',
+    area: '12 м²',
+    type: 'Лоджия',
+    work: 'Панорамное остекление, объединение с гостиной',
+    profile: 'KBE Эксперт 70',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/d3d42da7-e3c8-42c0-962c-55e1a10cbf0f.jpg',
+    tag: 'Панорамный вид',
+  },
+  {
+    id: 6,
+    jk: 'ЖК «Шуваловский»',
+    district: 'Выборгский р-н',
+    area: '8 м²',
+    type: 'Лоджия',
+    work: 'Зимний сад с UV-защитой и вентклапаном',
+    profile: 'KBE Эксперт 70',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/26e6adb7-79d4-4970-b771-e7db4e768713.jpg',
+    tag: 'Серия «Зимний сад»',
+  },
+];
+
 const TRUST_BADGES = [
   { icon: 'Award', label: 'Официальный партнёр VEKA' },
   { icon: 'BadgeCheck', label: 'Сертифицированный монтаж' },
@@ -129,6 +196,7 @@ const Index = () => {
   const [profile, setProfile] = useState(1);
   const [extras, setExtras] = useState<string[]>([]);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [portfolioSlide, setPortfolioSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSeries, setActiveSeries] = useState<number | null>(null);
 
@@ -691,30 +759,148 @@ const Index = () => {
       <section id="portfolio" className="py-14 sm:py-20">
         <div className="container">
           <SectionTitle eyebrow="Наши работы" title="Портфолио по объектам СПб" />
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 mt-8 sm:mt-12">
-            <div className="lg:col-span-2 relative rounded-2xl overflow-hidden group hover-lift">
-              <img src={PORTFOLIO_IMG} alt="До и после замены остекления" className="w-full h-full object-cover aspect-[16/10] sm:aspect-[16/10]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-5 sm:p-7">
-                <div className="text-white">
-                  <span className="px-3 py-1 rounded-full bg-primary text-xs font-semibold">До / После</span>
-                  <h3 className="font-display text-xl sm:text-2xl font-bold mt-2">ЖК «Северная Долина», 9 м²</h3>
-                  <p className="text-white/80 text-sm">Замена алюминия на VEKA 70 + утепление</p>
+
+          {/* Desktop: главная карточка + превью */}
+          <div className="hidden md:grid grid-cols-3 gap-5 mt-10 sm:mt-12">
+            {/* Главная карточка */}
+            <div className="col-span-2 relative rounded-2xl overflow-hidden group cursor-pointer hover-lift">
+              <img
+                src={PORTFOLIO_ITEMS[portfolioSlide].img}
+                alt={PORTFOLIO_ITEMS[portfolioSlide].jk}
+                className="w-full object-cover aspect-[16/10] transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                <span className="w-fit px-3 py-1 rounded-full bg-accent text-white text-xs font-semibold mb-3 shadow-glow-orange">
+                  {PORTFOLIO_ITEMS[portfolioSlide].tag}
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-1">
+                  {PORTFOLIO_ITEMS[portfolioSlide].jk}
+                </h3>
+                <p className="text-white/80 text-sm mb-3">{PORTFOLIO_ITEMS[portfolioSlide].work}</p>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { icon: 'MapPin', val: PORTFOLIO_ITEMS[portfolioSlide].district },
+                    { icon: 'Maximize2', val: PORTFOLIO_ITEMS[portfolioSlide].area },
+                    { icon: 'Home', val: PORTFOLIO_ITEMS[portfolioSlide].type },
+                    { icon: 'PanelTop', val: PORTFOLIO_ITEMS[portfolioSlide].profile },
+                  ].map((d) => (
+                    <span key={d.val} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/15 text-white text-xs font-medium backdrop-blur-sm">
+                      <Icon name={d.icon} size={13} /> {d.val}
+                    </span>
+                  ))}
                 </div>
               </div>
+              {/* Стрелки */}
+              <button
+                onClick={() => setPortfolioSlide((p) => (p - 1 + PORTFOLIO_ITEMS.length) % PORTFOLIO_ITEMS.length)}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronLeft" size={20} />
+              </button>
+              <button
+                onClick={() => setPortfolioSlide((p) => (p + 1) % PORTFOLIO_ITEMS.length)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center transition-all backdrop-blur-sm"
+              >
+                <Icon name="ChevronRight" size={20} />
+              </button>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
+
+            {/* Превью-список */}
+            <div className="flex flex-col gap-3 overflow-y-auto max-h-[420px] pr-1">
+              {PORTFOLIO_ITEMS.map((item, i) => (
+                <button
+                  key={item.id}
+                  onClick={() => setPortfolioSlide(i)}
+                  className={`flex gap-3 rounded-xl overflow-hidden border-2 transition-all text-left hover-lift ${
+                    portfolioSlide === i ? 'border-accent shadow-glow-orange' : 'border-border'
+                  }`}
+                >
+                  <img src={item.img} alt={item.jk} className="w-20 h-16 object-cover shrink-0" />
+                  <div className="py-2 pr-2 min-w-0">
+                    <div className={`font-display font-bold text-sm leading-tight mb-0.5 ${portfolioSlide === i ? 'text-accent' : ''}`}>
+                      {item.jk}
+                    </div>
+                    <div className="text-xs text-muted-foreground truncate">{item.work}</div>
+                    <div className="text-xs font-semibold text-primary mt-0.5">{item.area} · {item.type}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Точки-индикаторы (desktop) */}
+          <div className="hidden md:flex justify-center gap-2 mt-5">
+            {PORTFOLIO_ITEMS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPortfolioSlide(i)}
+                className={`h-2 rounded-full transition-all ${i === portfolioSlide ? 'bg-accent w-6' : 'bg-border w-2'}`}
+              />
+            ))}
+          </div>
+
+          {/* Mobile: полная карусель */}
+          <div className="md:hidden mt-8">
+            <div className="relative rounded-2xl overflow-hidden">
+              <img
+                src={PORTFOLIO_ITEMS[portfolioSlide].img}
+                alt={PORTFOLIO_ITEMS[portfolioSlide].jk}
+                className="w-full object-cover aspect-[4/3]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent flex flex-col justify-end p-5">
+                <span className="w-fit px-2.5 py-1 rounded-full bg-accent text-white text-xs font-semibold mb-2">
+                  {PORTFOLIO_ITEMS[portfolioSlide].tag}
+                </span>
+                <h3 className="font-display text-xl font-bold text-white mb-1">
+                  {PORTFOLIO_ITEMS[portfolioSlide].jk}
+                </h3>
+                <p className="text-white/80 text-xs">{PORTFOLIO_ITEMS[portfolioSlide].work}</p>
+              </div>
+              <button
+                onClick={() => setPortfolioSlide((p) => (p - 1 + PORTFOLIO_ITEMS.length) % PORTFOLIO_ITEMS.length)}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 text-white flex items-center justify-center"
+              >
+                <Icon name="ChevronLeft" size={18} />
+              </button>
+              <button
+                onClick={() => setPortfolioSlide((p) => (p + 1) % PORTFOLIO_ITEMS.length)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 text-white flex items-center justify-center"
+              >
+                <Icon name="ChevronRight" size={18} />
+              </button>
+            </div>
+
+            {/* Мета-инфо */}
+            <div className="mt-4 grid grid-cols-2 gap-2">
               {[
-                { jk: 'Кудрово', m: '6 м²', d: 'Тёплое остекление лоджии Rehau' },
-                { jk: 'Приморский р-н', m: '12 м²', d: 'Объединение балкона с кухней' },
-              ].map((p) => (
-                <div key={p.jk} className="bg-card border border-border rounded-2xl p-5 hover-lift flex flex-col justify-center">
-                  <Icon name="Building2" size={26} className="text-primary mb-2 sm:mb-3" />
-                  <h3 className="font-display text-lg sm:text-xl font-semibold">{p.jk}</h3>
-                  <p className="text-sm text-muted-foreground">{p.d}</p>
-                  <span className="mt-2 font-display font-bold text-accent">{p.m}</span>
+                { icon: 'MapPin', val: PORTFOLIO_ITEMS[portfolioSlide].district },
+                { icon: 'Maximize2', val: PORTFOLIO_ITEMS[portfolioSlide].area },
+                { icon: 'Home', val: PORTFOLIO_ITEMS[portfolioSlide].type },
+                { icon: 'PanelTop', val: PORTFOLIO_ITEMS[portfolioSlide].profile },
+              ].map((d) => (
+                <div key={d.val} className="flex items-center gap-2 bg-secondary/60 rounded-xl px-3 py-2 text-xs font-medium">
+                  <Icon name={d.icon} size={14} className="text-primary shrink-0" /> {d.val}
                 </div>
               ))}
             </div>
+
+            {/* Точки */}
+            <div className="flex justify-center gap-2 mt-4">
+              {PORTFOLIO_ITEMS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPortfolioSlide(i)}
+                  className={`h-2 rounded-full transition-all ${i === portfolioSlide ? 'bg-accent w-6' : 'bg-border w-2'}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* CTA под портфолио */}
+          <div className="mt-8 text-center">
+            <Button asChild variant="outline" className="rounded-full border-primary text-primary hover:bg-primary hover:text-white h-11 px-7">
+              <a href="#consult">Хочу так же — получить смету</a>
+            </Button>
           </div>
         </div>
       </section>
