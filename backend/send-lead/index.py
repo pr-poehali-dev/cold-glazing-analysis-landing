@@ -45,7 +45,7 @@ def handler(event: dict, context) -> dict:
     html = f"""
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
       <div style="background: #00669B; color: white; padding: 20px 28px; border-radius: 12px 12px 0 0;">
-        <h2 style="margin: 0; font-size: 22px;">🔥 Новая заявка — ТеплоОкна СПб</h2>
+        <h2 style="margin: 0; font-size: 22px;">🔥 Новая заявка — Ленинградские Фасады</h2>
         <p style="margin: 6px 0 0; opacity: 0.85; font-size: 14px;">{now}</p>
       </div>
       <div style="background: #f9fafb; padding: 24px 28px; border-radius: 0 0 12px 12px; border: 1px solid #e5e7eb; border-top: none;">
@@ -82,7 +82,7 @@ def handler(event: dict, context) -> dict:
         'серия': f'Заявка на серию «{series}»' if series else 'Заявка с лендинга',
     }
     subject_key = 'замер' if 'замер' in source.lower() else ('консультация' if 'консультация' in source.lower() else 'серия')
-    subject = f'[ТеплоОкна СПб] {subject_map[subject_key]} от {name or phone}'
+    subject = f'[Ленинградские Фасады] {subject_map[subject_key]} от {name or phone}'
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject

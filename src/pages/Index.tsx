@@ -416,7 +416,7 @@ const Index = () => {
             <span className="grid place-items-center w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-primary to-accent text-white">
               <Icon name="Snowflake" size={16} />
             </span>
-            ТеплоОкна<span className="text-primary">СПб</span>
+            Ленинградские<span className="text-primary"> Фасады</span>
           </a>
 
           {/* Desktop nav */}
@@ -1479,7 +1479,7 @@ const Index = () => {
             {/* Legal info */}
             <div className="mt-8 p-4 bg-card border border-border rounded-2xl text-xs text-muted-foreground space-y-1">
               <div className="font-semibold text-foreground text-sm mb-2">Реквизиты компании</div>
-              <div>ООО «ТеплоОкна СПб»</div>
+              <div>ООО «Ленинградские Фасады»</div>
               <div>ИНН: 7800000000 · ОГРН: 1230000000000</div>
               <div>Юридический адрес: 195027, г. Санкт-Петербург, пр. Энергетиков, д. 10</div>
               <div className="pt-1">
@@ -1548,10 +1548,10 @@ const Index = () => {
       <footer className="bg-primary text-white py-8 sm:py-10">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
           <div className="flex items-center gap-2 font-display font-bold text-lg">
-            <Icon name="Snowflake" size={20} /> ТеплоОкна СПб
+            <Icon name="Snowflake" size={20} /> Ленинградские Фасады
           </div>
           <p className="text-white/70 text-center text-xs sm:text-sm">
-            © 2026 ООО «ТеплоОкна СПб». Тёплое остекление балконов и лоджий в Санкт-Петербурге.
+            © 2026 ООО «Ленинградские Фасады». Тёплое остекление балконов и лоджий в Санкт-Петербурге.
           </p>
           <a href="tel:+79219107496" className="font-display font-semibold hover:text-white/80 transition-colors">
             +7 (921) 910-74-96
