@@ -15,9 +15,7 @@ const HERO_IMG =
 
 const NAV = [
   { label: 'Услуги', href: '#services' },
-  { label: 'Серии', href: '#series' },
   { label: 'Калькулятор', href: '#calc' },
-  { label: 'Как работаем', href: '#process' },
   { label: 'Акции', href: '#discounts' },
   { label: 'Отзывы', href: '#reviews' },
   { label: 'Контакты', href: '#contacts' },
