@@ -64,7 +64,7 @@ const BALCONY_SERIES = [
     name: 'Серия «Зимний сад»',
     tag: 'Для любителей растений',
     desc: 'Лоджия превращается в оранжерею: тёплый профиль, усиленный стеклопакет с UV-защитой, влагостойкая отделка.',
-    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/26e6adb7-79d4-4970-b771-e7db4e768713.jpg',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/56df182b-cb21-4dda-addc-061fdd5cc81e.jpg',
     profile: 'KBE Эксперт 70',
     area: '8–15 м²',
     price: 'от 72 000 ₽',
@@ -169,7 +169,7 @@ const PORTFOLIO_ITEMS = [
     type: 'Лоджия',
     work: 'Зимний сад с UV-защитой и вентклапаном',
     profile: 'KBE Эксперт 70',
-    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/26e6adb7-79d4-4970-b771-e7db4e768713.jpg',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/56df182b-cb21-4dda-addc-061fdd5cc81e.jpg',
     tag: 'Серия «Зимний сад»',
   },
 ];
