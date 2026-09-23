@@ -13,10 +13,7 @@ const HERO_IMG =
   'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/54e5a158-7dd5-457e-a358-c020981553d6.jpg';
 
 const NAV = [
-  { label: 'Услуги', href: '#services' },
   { label: 'Калькулятор', href: '#calc' },
-  { label: 'Акции', href: '#discounts' },
-  { label: 'Отзывы', href: '#reviews' },
   { label: 'Контакты', href: '#contacts' },
 ];
 
