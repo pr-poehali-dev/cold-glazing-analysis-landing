@@ -92,17 +92,17 @@ const PROFILES = [
 ];
 
 const TYPICAL_BALCONIES = [
-  { shape: 'Прямой', icon: 'Minus', oldPrice: '44 229 ₽', price: '38 460 ₽', monthly: '6 154 ₽/мес.' },
-  { shape: '«Г-образный»', icon: 'CornerDownRight', oldPrice: '59 110 ₽', price: '51 400 ₽', monthly: '8 224 ₽/мес.' },
-  { shape: '«П-образный»', icon: 'RectangleHorizontal', oldPrice: '81 535 ₽', price: '70 900 ₽', monthly: '11 344 ₽/мес.' },
-  { shape: 'Зиг-заг', icon: 'Zap', oldPrice: '84 525 ₽', price: '73 500 ₽', monthly: '11 760 ₽/мес.' },
+  { shape: 'Прямой', icon: 'Minus', oldPrice: '44 229 ₽', price: '38 460 ₽', monthly: '6 154 ₽/мес.', area: 4 },
+  { shape: '«Г-образный»', icon: 'CornerDownRight', oldPrice: '59 110 ₽', price: '51 400 ₽', monthly: '8 224 ₽/мес.', area: 6 },
+  { shape: '«П-образный»', icon: 'RectangleHorizontal', oldPrice: '81 535 ₽', price: '70 900 ₽', monthly: '11 344 ₽/мес.', area: 8 },
+  { shape: 'Зиг-заг', icon: 'Zap', oldPrice: '84 525 ₽', price: '73 500 ₽', monthly: '11 760 ₽/мес.', area: 9 },
 ];
 
 const PRICING_WITH_FINISH = [
-  { shape: 'Прямое ~18 м²', icon: 'Minus', noFinish: '49 554 ₽', withFinish: '141 932 ₽' },
-  { shape: 'П-образное ~13 м²', icon: 'RectangleHorizontal', noFinish: '34 438 ₽', withFinish: '100 139 ₽' },
-  { shape: '«Сапожок» ~23 м²', icon: 'Footprints', noFinish: '62 829 ₽', withFinish: '179 258 ₽' },
-  { shape: 'Угловое ~15 м²', icon: 'CornerDownRight', noFinish: '43 306 ₽', withFinish: '129 608 ₽' },
+  { shape: 'Прямое ~18 м²', icon: 'Minus', noFinish: '49 554 ₽', withFinish: '141 932 ₽', area: 18 },
+  { shape: 'П-образное ~13 м²', icon: 'RectangleHorizontal', noFinish: '34 438 ₽', withFinish: '100 139 ₽', area: 13 },
+  { shape: '«Сапожок» ~23 м²', icon: 'Footprints', noFinish: '62 829 ₽', withFinish: '179 258 ₽', area: 23 },
+  { shape: 'Угловое ~15 м²', icon: 'CornerDownRight', noFinish: '43 306 ₽', withFinish: '129 608 ₽', area: 15 },
 ];
 
 const REVIEWS = [
@@ -366,6 +366,14 @@ const Index = () => {
     setProfile(preset.profile);
     setExtras(preset.extras);
     setActiveSeries(preset.seriesId);
+  };
+
+  const applyAreaProfile = (areaValue: number, withFinish = false) => {
+    setArea([areaValue]);
+    setProfile(4);
+    setExtras(withFinish ? ['utep'] : []);
+    setActiveSeries(null);
+    document.getElementById('calc')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const profilePrices = [5900, 4900, 5400, 5200, 5100];
@@ -723,7 +731,11 @@ const Index = () => {
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {TYPICAL_BALCONIES.map((b) => (
-              <div key={b.shape} className="bg-card rounded-2xl p-5 sm:p-6 border border-border hover-lift flex flex-col">
+              <button
+                key={b.shape}
+                onClick={() => applyAreaProfile(b.area)}
+                className="text-left bg-card rounded-2xl p-5 sm:p-6 border border-border hover-lift flex flex-col cursor-pointer transition-all hover:border-accent"
+              >
                 <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 text-primary mb-4">
                   <Icon name={b.icon} size={22} />
                 </span>
@@ -735,8 +747,11 @@ const Index = () => {
                     <span className="font-display text-xl sm:text-2xl font-bold text-primary">{b.price}</span>
                   </div>
                   <div className="text-xs text-accent font-medium mt-1">Рассрочка от {b.monthly}</div>
+                  <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-primary">
+                    <Icon name="Calculator" size={13} /> Рассчитать точнее
+                  </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -766,8 +781,12 @@ const Index = () => {
                     <div className="text-xs text-muted-foreground mb-1">С утеплением и отделкой «под ключ»</div>
                     <div className="font-display text-xl sm:text-2xl font-bold text-primary">{p.withFinish}</div>
                   </div>
-                  <Button asChild size="sm" className="w-full rounded-xl bg-accent hover:bg-primary text-white shadow-glow-orange">
-                    <a href="#consult">Заказать расчёт</a>
+                  <Button
+                    size="sm"
+                    onClick={() => applyAreaProfile(p.area, true)}
+                    className="w-full rounded-xl bg-accent hover:bg-primary text-white shadow-glow-orange"
+                  >
+                    Заказать расчёт
                   </Button>
                 </div>
               </div>
