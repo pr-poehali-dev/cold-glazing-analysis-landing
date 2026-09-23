@@ -1443,6 +1443,18 @@ const Index = () => {
               </div>
             ))}
           </div>
+          <div className="flex justify-center mt-8 sm:mt-10">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-white h-12 px-7"
+            >
+              <a href="https://vk.ru/im?sel=-1203311" target="_blank" rel="noopener noreferrer">
+                <Icon name="MessageSquarePlus" size={18} className="mr-2" /> Оставить отзыв
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
