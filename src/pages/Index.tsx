@@ -410,9 +410,8 @@ const Index = () => {
           {/* Right side */}
           <div className="flex items-center gap-2 sm:gap-3">
             <a href="tel:+79817773070" className="flex items-center gap-1.5 font-display font-semibold text-sm sm:text-base">
-              <Icon name="Phone" size={15} className="text-primary shrink-0" />
+              <Icon name="Phone" size={18} className="text-primary shrink-0" />
               <span className="hidden sm:inline">+7 (981) 777-30-70</span>
-              <span className="sm:hidden text-primary font-bold">Звонок</span>
             </a>
             <Button asChild size="sm" className="hidden md:flex rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange text-xs sm:text-sm">
               <a href="#consult">Консультация</a>
