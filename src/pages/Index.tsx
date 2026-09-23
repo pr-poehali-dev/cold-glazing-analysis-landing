@@ -386,9 +386,9 @@ const Index = () => {
 
           {/* Right side */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <a href="tel:+79219107496" className="flex items-center gap-1.5 font-display font-semibold text-sm sm:text-base">
+            <a href="tel:+79817773070" className="flex items-center gap-1.5 font-display font-semibold text-sm sm:text-base">
               <Icon name="Phone" size={15} className="text-primary shrink-0" />
-              <span className="hidden sm:inline">+7 (921) 910-74-96</span>
+              <span className="hidden sm:inline">+7 (981) 777-30-70</span>
               <span className="sm:hidden text-primary font-bold">Звонок</span>
             </a>
             <Button asChild size="sm" className="hidden md:flex rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange text-xs sm:text-sm">
@@ -420,8 +420,8 @@ const Index = () => {
                 </a>
               ))}
               <div className="mt-3 pt-3 border-t border-border flex flex-col gap-2">
-                <a href="tel:+79219107496" className="flex items-center gap-3 py-3 px-4 rounded-xl bg-primary/10 text-primary font-semibold">
-                  <Icon name="Phone" size={18} /> +7 (921) 910-74-96
+                <a href="tel:+79817773070" className="flex items-center gap-3 py-3 px-4 rounded-xl bg-primary/10 text-primary font-semibold">
+                  <Icon name="Phone" size={18} /> +7 (981) 777-30-70
                 </a>
                 <Button asChild className="rounded-xl bg-accent text-white shadow-glow-orange h-12">
                   <a href="#consult" onClick={() => setMenuOpen(false)}>Бесплатная консультация</a>
@@ -557,7 +557,7 @@ const Index = () => {
       <div className="sticky top-16 z-40 lg:hidden bg-primary text-white py-2 px-4 flex items-center justify-between shadow-md">
         <span className="text-sm font-medium">Бесплатный замер за 15 минут</span>
         <a
-          href="tel:+79219107496"
+          href="tel:+79817773070"
           className="flex items-center gap-1.5 bg-accent rounded-full px-4 py-1.5 text-white text-sm font-bold shadow-glow-orange"
         >
           <Icon name="Phone" size={15} /> Позвонить
@@ -804,10 +804,10 @@ const Index = () => {
               индивидуальный расчёт под ваш балкон.
             </p>
             <a
-              href="tel:+79219107496"
+              href="tel:+79817773070"
               className="max-w-md w-full flex items-center justify-center gap-3 rounded-xl bg-accent hover:bg-white hover:text-primary text-white h-14 font-display text-xl sm:text-2xl font-bold shadow-glow-orange transition-colors"
             >
-              <Icon name="Phone" size={22} /> +7 (921) 910-74-96
+              <Icon name="Phone" size={22} /> +7 (981) 777-30-70
             </a>
             <p className="text-xs text-white/60 mt-3 max-w-md">
               Звонок бесплатный. Работаем ежедневно с 9:00 до 21:00.
@@ -1307,7 +1307,7 @@ const Index = () => {
                 <Button asChild size="lg" className="rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange h-12 px-7">
                   <a href="#consult">Записаться на замер со скидкой</a>
                 </Button>
-                <a href="tel:+79219107496" className="flex items-center justify-center gap-2 h-12 px-5 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all">
+                <a href="tel:+79817773070" className="flex items-center justify-center gap-2 h-12 px-5 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all">
                   <Icon name="Phone" size={17} /> Позвонить
                 </a>
               </div>
@@ -1374,7 +1374,7 @@ const Index = () => {
             <SectionTitle eyebrow="Контакты" title="Приезжайте или звоните" align="left" />
             <div className="mt-6 sm:mt-8 space-y-4">
               {[
-                { icon: 'Phone', label: 'Телефон', value: '+7 (921) 910-74-96', href: 'tel:+79219107496' },
+                { icon: 'Phone', label: 'Телефон', value: '+7 (981) 777-30-70', href: 'tel:+79817773070' },
                 { icon: 'Mail', label: 'Электронная почта', value: 'info@teplookna-spb.ru', href: 'mailto:info@teplookna-spb.ru' },
                 { icon: 'MapPin', label: 'Офис и производство', value: 'Санкт-Петербург, пр. Энергетиков, 10', href: undefined },
                 { icon: 'Clock', label: 'Режим работы', value: 'Ежедневно с 9:00 до 21:00', href: undefined },
@@ -1415,10 +1415,10 @@ const Index = () => {
             <h3 className="font-display text-xl sm:text-2xl font-bold mb-2">Записаться на бесплатный замер</h3>
             <p className="text-muted-foreground text-sm mb-5 sm:mb-6">Инженер приедет в удобное время с образцами профилей. Позвоните нам, чтобы договориться.</p>
             <a
-              href="tel:+79219107496"
+              href="tel:+79817773070"
               className="w-full flex items-center justify-center gap-3 h-14 rounded-xl font-display text-xl sm:text-2xl font-bold bg-accent hover:bg-primary text-white shadow-glow-orange hover:shadow-glow-blue transition-colors"
             >
-              <Icon name="Phone" size={22} /> +7 (921) 910-74-96
+              <Icon name="Phone" size={22} /> +7 (981) 777-30-70
             </a>
             <p className="text-xs text-muted-foreground mt-3">
               Звонок бесплатный. Работаем ежедневно с 9:00 до 21:00.
@@ -1436,8 +1436,8 @@ const Index = () => {
           <p className="text-white/70 text-center text-xs sm:text-sm">
             © 2026 ООО «Ленинградские Фасады». Тёплое остекление балконов и лоджий в Санкт-Петербурге.
           </p>
-          <a href="tel:+79219107496" className="font-display font-semibold hover:text-white/80 transition-colors">
-            +7 (921) 910-74-96
+          <a href="tel:+79817773070" className="font-display font-semibold hover:text-white/80 transition-colors">
+            +7 (981) 777-30-70
           </a>
         </div>
       </footer>
@@ -1445,7 +1445,7 @@ const Index = () => {
       {/* Mobile floating CTA */}
       <div className="fixed bottom-4 inset-x-4 z-50 sm:hidden">
         <a
-          href="tel:+79219107496"
+          href="tel:+79817773070"
           className="flex items-center justify-center gap-2 w-full h-14 rounded-2xl bg-accent text-white font-display font-bold text-base shadow-glow-orange shadow-lg"
         >
           <Icon name="Phone" size={20} /> Позвонить бесплатно
