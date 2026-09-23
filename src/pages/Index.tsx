@@ -91,6 +91,20 @@ const PROFILES = [
   { name: 'Melke Lite 70', cameras: '4 камеры', glass: 'Двухкамерный 40 мм', warm: '★★★★☆', price: 'от 5 100 ₽/м²' },
 ];
 
+const TYPICAL_BALCONIES = [
+  { shape: 'Прямой', icon: 'Minus', oldPrice: '44 229 ₽', price: '38 460 ₽', monthly: '6 154 ₽/мес.' },
+  { shape: '«Г-образный»', icon: 'CornerDownRight', oldPrice: '59 110 ₽', price: '51 400 ₽', monthly: '8 224 ₽/мес.' },
+  { shape: '«П-образный»', icon: 'RectangleHorizontal', oldPrice: '81 535 ₽', price: '70 900 ₽', monthly: '11 344 ₽/мес.' },
+  { shape: 'Зиг-заг', icon: 'Zap', oldPrice: '84 525 ₽', price: '73 500 ₽', monthly: '11 760 ₽/мес.' },
+];
+
+const PRICING_WITH_FINISH = [
+  { shape: 'Прямое ~18 м²', icon: 'Minus', noFinish: '49 554 ₽', withFinish: '141 932 ₽' },
+  { shape: 'П-образное ~13 м²', icon: 'RectangleHorizontal', noFinish: '34 438 ₽', withFinish: '100 139 ₽' },
+  { shape: '«Сапожок» ~23 м²', icon: 'Footprints', noFinish: '62 829 ₽', withFinish: '179 258 ₽' },
+  { shape: 'Угловое ~15 м²', icon: 'CornerDownRight', noFinish: '43 306 ₽', withFinish: '129 608 ₽' },
+];
+
 const REVIEWS = [
   { name: 'Анна К.', area: 'ЖК «Северная Долина»', text: 'Поменяли холодный алюминий на тёплый профиль — теперь на лоджии зимний сад! Зимой +20°C без обогревателя. Монтаж за один день.', rating: 5 },
   { name: 'Дмитрий В.', area: 'Кудрово', text: 'Боялся, что испортят фасад — но снаружи всё осталось как было. Внутри тепло и тихо, шум с улицы пропал. Спасибо инженеру за расчёт.', rating: 5 },
@@ -697,6 +711,68 @@ const Index = () => {
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* === TYPICAL BALCONIES === */}
+      <section id="typical" className="py-14 sm:py-20 bg-secondary/40">
+        <div className="container">
+          <SectionTitle eyebrow="Готовые конфигурации" title="Остекление типовых балконов" />
+          <p className="text-center text-muted-foreground mt-3 mb-8 sm:mb-10 text-sm sm:text-base max-w-xl mx-auto">
+            Выберите форму балкона — покажем ориентировочную стоимость остекления профилем Melke
+          </p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {TYPICAL_BALCONIES.map((b) => (
+              <div key={b.shape} className="bg-card rounded-2xl p-5 sm:p-6 border border-border hover-lift flex flex-col">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 text-primary mb-4">
+                  <Icon name={b.icon} size={22} />
+                </span>
+                <h3 className="font-display text-base sm:text-lg font-bold mb-3">{b.shape}</h3>
+                <div className="mt-auto">
+                  <div className="text-xs text-muted-foreground line-through">{b.oldPrice}</div>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-xs text-muted-foreground">от</span>
+                    <span className="font-display text-xl sm:text-2xl font-bold text-primary">{b.price}</span>
+                  </div>
+                  <div className="text-xs text-accent font-medium mt-1">Рассрочка от {b.monthly}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === PRICING WITH FINISH === */}
+      <section id="pricing-finish" className="py-14 sm:py-20">
+        <div className="container">
+          <SectionTitle eyebrow="С отделкой под ключ" title="Цены остекления балкона с отделкой" />
+          <p className="text-center text-muted-foreground mt-3 mb-8 sm:mb-10 text-sm sm:text-base max-w-xl mx-auto">
+            Сравните стоимость остекления без отделки и «под ключ» — с утеплением стен, пола и потолка
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {PRICING_WITH_FINISH.map((p) => (
+              <div key={p.shape} className="bg-card rounded-2xl overflow-hidden border border-border hover-lift">
+                <div className="bg-primary text-white px-5 py-4 flex items-center gap-3">
+                  <Icon name={p.icon} size={20} />
+                  <h3 className="font-display text-sm sm:text-base font-semibold">{p.shape}</h3>
+                </div>
+                <div className="p-5 space-y-4">
+                  <div>
+                    <div className="text-xs text-muted-foreground mb-1">Без утепления</div>
+                    <div className="font-display text-lg sm:text-xl font-bold">{p.noFinish}</div>
+                  </div>
+                  <div className="w-full h-px bg-border" />
+                  <div>
+                    <div className="text-xs text-muted-foreground mb-1">С утеплением и отделкой «под ключ»</div>
+                    <div className="font-display text-xl sm:text-2xl font-bold text-primary">{p.withFinish}</div>
+                  </div>
+                  <Button asChild size="sm" className="w-full rounded-xl bg-accent hover:bg-primary text-white shadow-glow-orange">
+                    <a href="#consult">Заказать расчёт</a>
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
