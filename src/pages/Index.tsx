@@ -221,7 +221,7 @@ const PROCESS_STEPS = [
     step: '01',
     title: 'Заявка за 1 минуту',
     desc: 'Оставьте номер телефона на сайте или позвоните сами. Менеджер перезвонит в течение 15 минут, уточнит размеры и договорится о замере.',
-    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/0b5106ce-1a4d-4984-b28b-960310cf7a6d.jpg',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/fcaa43aa-64b9-43ed-84eb-2d762bd0e6a2.jpg',
     icon: 'Phone',
     duration: '15 минут',
   },
@@ -237,7 +237,7 @@ const PROCESS_STEPS = [
     step: '03',
     title: 'Точная смета и договор',
     desc: 'Готовим детальную смету с фиксированной стоимостью. Подписываем договор с гарантиями, указанием сроков и штрафами за их нарушение.',
-    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/a5e7a9ce-6eee-47ff-9be6-9ca226365f7b.jpg',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/30ca06e5-aa03-44e6-bf71-7190f9ad437c.jpg',
     icon: 'FileText',
     duration: '1 день',
   },
@@ -261,7 +261,7 @@ const PROCESS_STEPS = [
     step: '06',
     title: 'Сдача и гарантия',
     desc: 'Принимаете работу по акту. Выдаём гарантийный талон на 10 лет. В первый год — бесплатный сервис и регулировка фурнитуры по вашему звонку.',
-    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/42d873a8-b8c1-49ba-b7c5-17785ca10daf.jpg',
+    img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/fbbd8b0c-0301-4171-a52b-a9c2b830ecf4.jpg',
     icon: 'ShieldCheck',
     duration: 'Навсегда',
   },
@@ -587,7 +587,7 @@ const Index = () => {
         <div className="container grid lg:grid-cols-2 gap-10 items-center">
           <div className="relative rounded-3xl overflow-hidden hover-lift">
             <img
-              src="https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/d33b75ee-1aae-409e-a432-6e67d5f3d10a.jpg"
+              src="https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/5ef04373-60f1-4925-b8fe-b4f134f401a4.jpg"
               alt="Уютный тёплый балкон зимой"
               className="w-full object-cover aspect-[4/3]"
             />
@@ -1288,8 +1288,8 @@ const Index = () => {
           {/* Фото + CTA-блок */}
           <div className="mt-10 grid lg:grid-cols-2 gap-6 bg-card border border-border rounded-3xl overflow-hidden">
             <img
-              src="https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/42d873a8-b8c1-49ba-b7c5-17785ca10daf.jpg"
-              alt="Счастливая семья на тёплом балконе"
+              src="https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/b6ac0747-8f4a-4af7-9980-74cbe3c3ff40.jpg"
+              alt="Бригада мастеров устанавливает тёплое остекление"
               className="w-full h-64 lg:h-auto object-cover"
             />
             <div className="p-7 sm:p-10 flex flex-col justify-center">
