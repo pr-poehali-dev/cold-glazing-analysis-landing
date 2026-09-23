@@ -1546,6 +1546,15 @@ const Index = () => {
             </a>
           </div>
         </div>
+        <div className="container flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mt-5 pt-5 border-t border-white/10 text-xs text-white/60">
+          <a href="/terms" className="hover:text-white transition-colors underline underline-offset-2">
+            Пользовательское соглашение
+          </a>
+          <span className="hidden sm:inline">·</span>
+          <a href="/privacy" className="hover:text-white transition-colors underline underline-offset-2">
+            Согласие на обработку персональных данных
+          </a>
+        </div>
       </footer>
 
       {/* Mobile floating CTA */}
