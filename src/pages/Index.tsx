@@ -1499,18 +1499,6 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Legal info */}
-            <div className="mt-8 p-4 bg-card border border-border rounded-2xl text-xs text-muted-foreground space-y-1">
-              <div className="font-semibold text-foreground text-sm mb-2">Реквизиты компании</div>
-              <div>ООО «Ленинградские Фасады»</div>
-              <div>ИНН: 7800000000 · ОГРН: 1230000000000</div>
-              <div>Юридический адрес: 195027, г. Санкт-Петербург, пр. Энергетиков, д. 10</div>
-              <div className="pt-1">
-                <a href="#contacts" className="underline underline-offset-2 hover:text-primary">
-                  Политика конфиденциальности
-                </a>
-              </div>
-            </div>
           </div>
 
           <div className="bg-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-border shadow-xl flex flex-col justify-center">
@@ -1535,6 +1523,9 @@ const Index = () => {
           <div className="flex items-center gap-2 font-display font-bold text-lg">
             <Icon name="Snowflake" size={20} /> Ленинградские Фасады
           </div>
+          <p className="text-white/70 text-xs sm:text-sm">
+            ИНН: 7800000000
+          </p>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               {SOCIAL_LINKS.map(({ name, href, Icon: SocialIcon }) => (
