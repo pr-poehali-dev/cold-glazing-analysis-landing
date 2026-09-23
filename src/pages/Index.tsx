@@ -1535,9 +1535,6 @@ const Index = () => {
           <div className="flex items-center gap-2 font-display font-bold text-lg">
             <Icon name="Snowflake" size={20} /> Ленинградские Фасады
           </div>
-          <p className="text-white/70 text-center text-xs sm:text-sm">
-            © 2026 ООО «Ленинградские Фасады». Тёплое остекление балконов и лоджий в Санкт-Петербурге.
-          </p>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               {SOCIAL_LINKS.map(({ name, href, Icon: SocialIcon }) => (
@@ -1601,7 +1598,7 @@ const VkIcon = ({ size = 18 }: { size?: number }) => (
 
 const AvitoIcon = ({ size = 18 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="10" fill="currentColor" />
+    <circle cx="12" cy="12" r="10" fill="#00AAA6" />
     <text x="12" y="16.5" textAnchor="middle" fontSize="12" fontWeight="700" fontFamily="Arial, sans-serif" fill="white">A</text>
   </svg>
 );
