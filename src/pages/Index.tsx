@@ -24,9 +24,9 @@ const ADVANTAGES = [
   { icon: 'ThermometerSun', title: '+15°C к температуре', text: 'Балкон становится полноценной тёплой комнатой даже в петербургские морозы.' },
   { icon: 'ShieldCheck', title: 'Гарантия 10 лет', text: 'Официальная гарантия на профиль, фурнитуру и монтажные работы.' },
   { icon: 'Building2', title: 'Сохраняем фасад', text: 'Внешний вид, цвет и расстекловка остаются прежними — согласований не требуется.' },
-  { icon: 'Wallet', title: 'Рассрочка 0%', text: 'До 12 месяцев без переплат и первоначального взноса. Одобрение за 5 минут.' },
   { icon: 'Factory', title: 'Своё производство', text: 'Без посредников — цена ниже рынка на 10–15%, а сроки короче.' },
   { icon: 'Ruler', title: 'Бесплатный замер', text: 'Инженер приедет в удобное время, замерит и рассчитает точную смету на месте.' },
+  { icon: 'Clock', title: 'Монтаж за 1 день', text: 'Стандартный балкон остекляем за один рабочий день без лишней грязи и шума.' },
 ];
 
 const SERVICES = [
@@ -92,10 +92,10 @@ const PROFILES = [
 ];
 
 const TYPICAL_BALCONIES = [
-  { shape: 'Прямой', icon: 'Minus', oldPrice: '44 229 ₽', price: '38 460 ₽', monthly: '6 154 ₽/мес.', area: 4 },
-  { shape: '«Г-образный»', icon: 'CornerDownRight', oldPrice: '59 110 ₽', price: '51 400 ₽', monthly: '8 224 ₽/мес.', area: 6 },
-  { shape: '«П-образный»', icon: 'RectangleHorizontal', oldPrice: '81 535 ₽', price: '70 900 ₽', monthly: '11 344 ₽/мес.', area: 8 },
-  { shape: 'Зиг-заг', icon: 'Zap', oldPrice: '84 525 ₽', price: '73 500 ₽', monthly: '11 760 ₽/мес.', area: 9 },
+  { shape: 'Прямой', icon: 'Minus', oldPrice: '44 229 ₽', price: '38 460 ₽', area: 4 },
+  { shape: '«Г-образный»', icon: 'CornerDownRight', oldPrice: '59 110 ₽', price: '51 400 ₽', area: 6 },
+  { shape: '«П-образный»', icon: 'RectangleHorizontal', oldPrice: '81 535 ₽', price: '70 900 ₽', area: 8 },
+  { shape: 'Зиг-заг', icon: 'Zap', oldPrice: '84 525 ₽', price: '73 500 ₽', area: 9 },
 ];
 
 const PRICING_WITH_FINISH = [
@@ -117,7 +117,6 @@ const FAQ = [
   { q: 'Выдержит ли балконная плита вес тёплых окон?', a: 'Тёплый ПВХ-профиль легче, чем кажется. Перед монтажом инженер оценивает состояние плиты и парапета. При необходимости усиливаем основание — это входит в смету и обсуждается заранее.' },
   { q: 'Сколько времени занимает монтаж?', a: 'Стандартный балкон — 1 день. Лоджия с утеплением и отделкой «под ключ» — 2–4 дня. Точные сроки фиксируем в договоре после замера.' },
   { q: 'Какая гарантия и что в неё входит?', a: 'Гарантия 10 лет на профиль и стеклопакеты, 5 лет — на фурнитуру и монтажные работы. Бесплатное сервисное обслуживание в первый год.' },
-  { q: 'Можно ли оформить рассрочку?', a: 'Да, рассрочка 0% до 12 месяцев без первоначального взноса. Одобрение онлайн за 5 минут, нужен только паспорт.' },
 ];
 
 const PORTFOLIO_ITEMS = [
@@ -311,16 +310,6 @@ const DISCOUNTS = [
     deadline: 'До конца недели',
     icon2: 'Clock',
   },
-  {
-    icon: 'CreditCard',
-    badge: 'Рассрочка',
-    title: 'Рассрочка 0% на 12 месяцев',
-    desc: 'Сделайте балкон сейчас — платите потом. Одобрение за 5 минут онлайн, только паспорт. Без переплат и скрытых комиссий.',
-    cta: 'Оформить рассрочку',
-    color: 'from-green-600 to-primary',
-    deadline: 'Постоянное предложение',
-    icon2: 'BadgeCheck',
-  },
 ];
 
 const SERIES_PRESETS = [
@@ -417,6 +406,20 @@ const Index = () => {
 
           {/* Right side */}
           <div className="flex items-center gap-2 sm:gap-3">
+            <div className="hidden sm:flex items-center gap-1.5">
+              {SOCIAL_LINKS.map(({ name, href, Icon: SocialIcon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="grid place-items-center w-8 h-8 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary transition-colors"
+                >
+                  <SocialIcon size={16} />
+                </a>
+              ))}
+            </div>
             <a href="tel:+79817773070" className="flex items-center gap-1.5 font-display font-semibold text-sm sm:text-base">
               <Icon name="Phone" size={18} className="text-primary shrink-0" />
               <span className="hidden sm:inline">+7 (981) 777-30-70</span>
@@ -746,7 +749,6 @@ const Index = () => {
                     <span className="text-xs text-muted-foreground">от</span>
                     <span className="font-display text-xl sm:text-2xl font-bold text-primary">{b.price}</span>
                   </div>
-                  <div className="text-xs text-accent font-medium mt-1">Рассрочка от {b.monthly}</div>
                   <div className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-primary">
                     <Icon name="Calculator" size={13} /> Рассчитать точнее
                   </div>
@@ -1356,7 +1358,7 @@ const Index = () => {
           </div>
 
           {/* Карточки акций */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
             {DISCOUNTS.map((d) => (
               <div key={d.title} className={`relative rounded-3xl bg-gradient-to-br ${d.color} text-white overflow-hidden hover-lift`}>
                 {/* Декор */}
@@ -1539,9 +1541,25 @@ const Index = () => {
           <p className="text-white/70 text-center text-xs sm:text-sm">
             © 2026 ООО «Ленинградские Фасады». Тёплое остекление балконов и лоджий в Санкт-Петербурге.
           </p>
-          <a href="tel:+79817773070" className="font-display font-semibold hover:text-white/80 transition-colors">
-            +7 (981) 777-30-70
-          </a>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              {SOCIAL_LINKS.map(({ name, href, Icon: SocialIcon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="grid place-items-center w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                >
+                  <SocialIcon size={18} />
+                </a>
+              ))}
+            </div>
+            <a href="tel:+79817773070" className="font-display font-semibold hover:text-white/80 transition-colors">
+              +7 (981) 777-30-70
+            </a>
+          </div>
         </div>
       </footer>
 
@@ -1577,5 +1595,23 @@ const SectionTitle = ({
     </h2>
   </div>
 );
+
+const VkIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.808 0 1.126-.26 1.126-.668 0-.863-1.421-2.386-2.649-3.503-1.633-1.51-1.723-1.597-.134-3.628 1.914-2.417 4.146-5.286 2.51-6.415-.696-.472-2.075-.472-3.38-.472-.877 0-1.66.008-1.996.008-.792 0-.95.442-1.16 1.137-.7 2.284-2.27 5.297-3.18 5.297-.412 0-.596-.34-.596-1.117v-3.39c0-1.29-.396-1.935-1.463-1.935H8.518c-.72 0-1.129.443-1.129.892 0 .767 1.129.918 1.246 3.013v2.24c0 1.02-.184 1.204-.596 1.204-1.104 0-3.02-3.03-4.29-6.775-.25-.73-.5-1.024-1.297-1.024H.253C.036 4.058 0 4.297 0 4.65c0 .663.806 4.084 3.75 8.572C5.73 16.376 8.395 18 10.797 18c1.446 0 1.622-.325 1.622-.885v-2.048c0-.646.136-.773.596-.773.34 0 .924.17 2.284 1.484 1.552 1.554 1.807 2.216 2.68 2.216h.183z" />
+  </svg>
+);
+
+const AvitoIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="10" fill="currentColor" />
+    <text x="12" y="16.5" textAnchor="middle" fontSize="12" fontWeight="700" fontFamily="Arial, sans-serif" fill="white">A</text>
+  </svg>
+);
+
+const SOCIAL_LINKS = [
+  { name: 'VK', href: 'https://vk.ru/zamena_ostekleniya_spb', Icon: VkIcon },
+  { name: 'Avito', href: 'https://www.avito.ru/brands/6ad9dd994720d14613d3204a32298aca/all?sellerId=6ad9dd994720d14613d3204a32298aca', Icon: AvitoIcon },
+];
 
 export default Index;
