@@ -12,10 +12,7 @@ import {
 const HERO_IMG =
   'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/54e5a158-7dd5-457e-a358-c020981553d6.jpg';
 
-const NAV = [
-  { label: 'Калькулятор', href: '#calc' },
-  { label: 'Контакты', href: '#contacts' },
-];
+const NAV_CTA_TEXT = 'Узнайте точную цену за 2 минуты — позвоните сейчас!';
 
 const ADVANTAGES = [
   { icon: 'ThermometerSun', title: '+15°C к температуре', text: 'Балкон становится полноценной тёплой комнатой даже в петербургские морозы.' },
@@ -362,7 +359,6 @@ const Index = () => {
   const [extras, setExtras] = useState<string[]>([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [portfolioSlide, setPortfolioSlide] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [activeSeries, setActiveSeries] = useState<number | null>(null);
   const [heroSlide, setHeroSlide] = useState(0);
   const [processSlide, setProcessSlide] = useState(0);
@@ -417,14 +413,14 @@ const Index = () => {
             Ленинградские<span className="text-primary"> Фасады</span>
           </a>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-5 text-sm font-medium">
-            {NAV.map((n) => (
-              <a key={n.href} href={n.href} className="text-muted-foreground hover:text-primary transition-colors whitespace-nowrap">
-                {n.label}
-              </a>
-            ))}
-          </nav>
+          {/* Desktop nav CTA */}
+          <a
+            href="tel:+79817773070"
+            className="hidden lg:flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors whitespace-nowrap"
+          >
+            <Icon name="PhoneCall" size={16} className="shrink-0" />
+            {NAV_CTA_TEXT}
+          </a>
 
           {/* Right side */}
           <div className="flex items-center gap-2 sm:gap-3">
@@ -449,46 +445,21 @@ const Index = () => {
             <Button asChild size="sm" className="hidden md:flex rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange text-xs sm:text-sm">
               <a href="#consult">Консультация</a>
             </Button>
-            {/* Burger */}
-            <button
-              onClick={() => setMenuOpen((v) => !v)}
-              className="lg:hidden grid place-items-center w-9 h-9 rounded-xl border border-border hover:bg-secondary transition-colors"
-              aria-label="Меню"
-            >
-              <Icon name={menuOpen ? 'X' : 'Menu'} size={20} />
-            </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="lg:hidden border-t border-border bg-background/98 backdrop-blur-xl">
-            <nav className="container py-4 flex flex-col gap-1">
-              {NAV.map((n) => (
-                <a
-                  key={n.href}
-                  href={n.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="py-3 px-4 rounded-xl text-base font-medium hover:bg-secondary hover:text-primary transition-colors"
-                >
-                  {n.label}
-                </a>
-              ))}
-              <div className="mt-3 pt-3 border-t border-border flex flex-col gap-2">
-                <a href="tel:+79817773070" className="flex items-center gap-3 py-3 px-4 rounded-xl bg-primary/10 text-primary font-semibold">
-                  <Icon name="Phone" size={18} /> +7 (981) 777-30-70
-                </a>
-                <Button asChild className="rounded-xl bg-accent text-white shadow-glow-orange h-12">
-                  <a href="#consult" onClick={() => setMenuOpen(false)}>Бесплатная консультация</a>
-                </Button>
-              </div>
-            </nav>
-          </div>
-        )}
+        {/* Mobile CTA bar */}
+        <a
+          href="tel:+79817773070"
+          className="lg:hidden flex items-center justify-center gap-2 border-t border-border bg-primary/5 px-4 py-2 text-center text-xs sm:text-sm font-semibold text-primary"
+        >
+          <Icon name="PhoneCall" size={14} className="shrink-0" />
+          <span className="leading-tight">{NAV_CTA_TEXT}</span>
+        </a>
       </header>
 
       {/* === HERO === */}
-      <section id="top" className="relative pt-24 sm:pt-28 pb-12 sm:pb-20 grid-bg">
+      <section id="top" className="relative pt-32 sm:pt-36 lg:pt-28 pb-12 sm:pb-20 grid-bg">
         <div className="container grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="animate-fade-in">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs sm:text-sm mb-4 sm:mb-5">
@@ -609,7 +580,7 @@ const Index = () => {
       </section>
 
       {/* === QUICK CALL BANNER (мобильный Директ-элемент) === */}
-      <div className="sticky top-16 z-40 lg:hidden bg-primary text-white py-2 px-4 flex items-center justify-between shadow-md">
+      <div className="sticky top-[88px] sm:top-24 z-40 lg:hidden bg-primary text-white py-2 px-4 flex items-center justify-between shadow-md">
         <span className="text-sm font-medium">Бесплатный замер за 15 минут</span>
         <a
           href="tel:+79817773070"
