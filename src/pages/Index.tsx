@@ -583,7 +583,7 @@ const Index = () => {
 
       {/* === QUICK CALL BANNER (мобильный Директ-элемент) === */}
       <div className="sticky top-[88px] sm:top-24 z-40 lg:hidden bg-primary text-white py-2 px-4 flex items-center justify-between shadow-md">
-        <span className="text-sm font-medium">Бесплатный замер за 15 минут</span>
+        <span className="text-sm font-medium">Уточнить дату замера</span>
         <a
           href="tel:+79817773070"
           className="flex items-center gap-1.5 bg-accent rounded-full px-4 py-1.5 text-white text-sm font-bold shadow-glow-orange"
