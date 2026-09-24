@@ -99,9 +99,9 @@ const PAIN_POINTS = [
 ];
 
 const SERVICES = [
-  { icon: 'PanelTop', title: 'Замена холодного на тёплое', price: 'от 4 900 ₽/м²', text: 'Демонтаж алюминия и установка тёплого профиля с двухкамерным стеклопакетом.' },
-  { icon: 'Home', title: 'Тёплое остекление лоджий', price: 'от 5 400 ₽/м²', text: 'Профиль VEKA/Rehau/Melke 70 мм, энергосберегающее стекло, тёплый отлив и подоконник.' },
-  { icon: 'Layers', title: 'Утепление и отделка «под ключ»', price: 'от 3 200 ₽/м²', text: 'Утепление стен, пола и потолка, отделка вагонкой или панелями, тёплый пол.' },
+  { icon: 'PanelTop', title: 'Замена холодного на тёплое', price: 'от 7 350 ₽/м²', text: 'Демонтаж алюминия и установка тёплого профиля с двухкамерным стеклопакетом.' },
+  { icon: 'Home', title: 'Тёплое остекление лоджий', price: 'от 8 100 ₽/м²', text: 'Профиль VEKA/Rehau/Melke 70 мм, энергосберегающее стекло, тёплый отлив и подоконник.' },
+  { icon: 'Layers', title: 'Утепление и отделка «под ключ»', price: 'от 4 800 ₽/м²', text: 'Утепление стен, пола и потолка, отделка вагонкой или панелями, тёплый пол.' },
   { icon: 'Sun', title: 'Объединение с комнатой', price: 'по проекту', text: 'Демонтаж блока, вынос радиатора, тёплый пол — балкон становится частью квартиры.' },
 ];
 
@@ -114,7 +114,7 @@ const BALCONY_SERIES = [
     img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/95838ce2-f079-429a-a058-8d29e3d09802.jpg',
     profile: 'VEKA Softline 70',
     area: '6–10 м²',
-    price: 'от 58 000 ₽',
+    price: 'от 87 000 ₽',
     includes: ['Тёплое остекление', 'Утепление стен и пола', 'Вагонка под дерево', 'Светодиодная подсветка'],
   },
   {
@@ -125,7 +125,7 @@ const BALCONY_SERIES = [
     img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/4e3e6b72-c905-4811-936e-d51f60935a78.jpg',
     profile: 'Brusbox Super 70',
     area: '5–8 м²',
-    price: 'от 64 000 ₽',
+    price: 'от 96 000 ₽',
     includes: ['Тёплое остекление', 'Тёплый пол (электро)', 'Панели ПВХ белые', 'Розетки и освещение'],
   },
   {
@@ -136,7 +136,7 @@ const BALCONY_SERIES = [
     img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/56df182b-cb21-4dda-addc-061fdd5cc81e.jpg',
     profile: 'KBE Эксперт 70',
     area: '8–15 м²',
-    price: 'от 72 000 ₽',
+    price: 'от 108 000 ₽',
     includes: ['Тёплое остекление с UV-защитой', 'Влагостойкая отделка', 'Система полива', 'Вентиляционный клапан'],
   },
   {
@@ -147,31 +147,31 @@ const BALCONY_SERIES = [
     img: 'https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/54e5a158-7dd5-457e-a358-c020981553d6.jpg',
     profile: 'Rehau Blitz 60',
     area: '3–6 м²',
-    price: 'от 29 000 ₽',
+    price: 'от 43 500 ₽',
     includes: ['Тёплое остекление', 'Демонтаж алюминия', 'Уплотнители и фурнитура', 'Вывоз мусора'],
   },
 ];
 
 const PROFILES = [
-  { name: 'VEKA Softline 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 5 900 ₽/м²' },
-  { name: 'Rehau Blitz 60', cameras: '3 камеры', glass: 'Однокамерный 32 мм', warm: '★★★★☆', price: 'от 4 900 ₽/м²' },
-  { name: 'KBE Эксперт 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 5 400 ₽/м²' },
-  { name: 'Brusbox Super 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 5 200 ₽/м²' },
-  { name: 'Melke Lite 70', cameras: '4 камеры', glass: 'Двухкамерный 40 мм', warm: '★★★★☆', price: 'от 5 100 ₽/м²' },
+  { name: 'VEKA Softline 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 8 850 ₽/м²' },
+  { name: 'Rehau Blitz 60', cameras: '3 камеры', glass: 'Однокамерный 32 мм', warm: '★★★★☆', price: 'от 7 350 ₽/м²' },
+  { name: 'KBE Эксперт 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 8 100 ₽/м²' },
+  { name: 'Brusbox Super 70', cameras: '5 камер', glass: 'Двухкамерный 40 мм', warm: '★★★★★', price: 'от 7 800 ₽/м²' },
+  { name: 'Melke Lite 70', cameras: '4 камеры', glass: 'Двухкамерный 40 мм', warm: '★★★★☆', price: 'от 7 650 ₽/м²' },
 ];
 
 const TYPICAL_BALCONIES = [
-  { shape: 'Прямой', icon: 'Minus', oldPrice: '44 229 ₽', price: '38 460 ₽', area: 4 },
-  { shape: '«Г-образный»', icon: 'CornerDownRight', oldPrice: '59 110 ₽', price: '51 400 ₽', area: 6 },
-  { shape: '«П-образный»', icon: 'RectangleHorizontal', oldPrice: '81 535 ₽', price: '70 900 ₽', area: 8 },
-  { shape: 'Зиг-заг', icon: 'Zap', oldPrice: '84 525 ₽', price: '73 500 ₽', area: 9 },
+  { shape: 'Прямой', icon: 'Minus', oldPrice: '66 344 ₽', price: '57 690 ₽', area: 4 },
+  { shape: '«Г-образный»', icon: 'CornerDownRight', oldPrice: '88 665 ₽', price: '77 100 ₽', area: 6 },
+  { shape: '«П-образный»', icon: 'RectangleHorizontal', oldPrice: '122 303 ₽', price: '106 350 ₽', area: 8 },
+  { shape: 'Зиг-заг', icon: 'Zap', oldPrice: '126 788 ₽', price: '110 250 ₽', area: 9 },
 ];
 
 const PRICING_WITH_FINISH = [
-  { shape: 'Прямое ~18 м²', icon: 'Minus', noFinish: '49 554 ₽', withFinish: '141 932 ₽', area: 18 },
-  { shape: 'П-образное ~13 м²', icon: 'RectangleHorizontal', noFinish: '34 438 ₽', withFinish: '100 139 ₽', area: 13 },
-  { shape: '«Сапожок» ~23 м²', icon: 'Footprints', noFinish: '62 829 ₽', withFinish: '179 258 ₽', area: 23 },
-  { shape: 'Угловое ~15 м²', icon: 'CornerDownRight', noFinish: '43 306 ₽', withFinish: '129 608 ₽', area: 15 },
+  { shape: 'Прямое ~18 м²', icon: 'Minus', noFinish: '74 331 ₽', withFinish: '212 898 ₽', area: 18 },
+  { shape: 'П-образное ~13 м²', icon: 'RectangleHorizontal', noFinish: '51 657 ₽', withFinish: '150 209 ₽', area: 13 },
+  { shape: '«Сапожок» ~23 м²', icon: 'Footprints', noFinish: '94 244 ₽', withFinish: '268 887 ₽', area: 23 },
+  { shape: 'Угловое ~15 м²', icon: 'CornerDownRight', noFinish: '64 959 ₽', withFinish: '194 412 ₽', area: 15 },
 ];
 
 const REVIEWS = [
@@ -395,11 +395,11 @@ const Index = () => {
     document.getElementById('calc')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const profilePrices = [5900, 4900, 5400, 5200, 5100];
+  const profilePrices = [8850, 7350, 8100, 7800, 7650];
   const extraOptions = [
-    { id: 'utep', label: 'Утепление и отделка', price: 3200 },
-    { id: 'floor', label: 'Тёплый пол', price: 1800 },
-    { id: 'sill', label: 'Подоконник-столешница', price: 6000 },
+    { id: 'utep', label: 'Утепление и отделка', price: 4800 },
+    { id: 'floor', label: 'Тёплый пол', price: 2700 },
+    { id: 'sill', label: 'Подоконник-столешница', price: 9000 },
   ];
 
   const toggleExtra = (id: string) =>
@@ -460,7 +460,7 @@ const Index = () => {
       </header>
 
       {/* === HERO === */}
-      <section id="top" className="relative pt-32 sm:pt-36 lg:pt-28 pb-12 sm:pb-20 grid-bg">
+      <section id="top" className="relative pt-32 sm:pt-36 lg:pt-28 pb-14 sm:pb-20 grid-bg">
         <div className="container grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="animate-fade-in">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08]">
