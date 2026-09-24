@@ -25,61 +25,73 @@ const ADVANTAGES = [
 
 const PAIN_POINTS = [
   {
+    problemIcon: 'TrendingUp',
     icon: 'Receipt',
     problem: '«В объявлении цена «от», а по факту сумма выросла в разы»',
     solution: 'Фиксируем итоговую стоимость в договоре после замера — никаких скрытых доплат за «дополнительные работы».',
   },
   {
+    problemIcon: 'AlertTriangle',
     icon: 'Ruler',
     problem: '«Замерщик не учёл трубу, выступ — рама не влезла, появились щели»',
     solution: 'Инженер, а не менеджер, выезжает на замер и фиксирует все нюансы проёма в акте перед изготовлением.',
   },
   {
-    icon: 'Users',
+    problemIcon: 'MessageSquareWarning',
+    icon: 'UserCheck',
     problem: '«Менеджер, замерщик и монтажник говорят разное»',
     solution: 'За вашим объектом закреплён один инженер-куратор — от заявки до сдачи работ, без «испорченного телефона».',
   },
   {
+    problemIcon: 'CalendarClock',
     icon: 'Clock',
     problem: '«Долго ждали ответа, сроки переносили, замерщик приезжал несколько раз»',
     solution: 'Перезваниваем в течение 15 минут, замер — в согласованный день и час, без переносов.',
   },
   {
+    problemIcon: 'PackageX',
     icon: 'Layers',
     problem: '«Поставили материалы дешевле, чем обещали»',
     solution: 'В договоре прописан точный профиль, фурнитура и толщина утеплителя — то, что подписали, то и монтируем.',
   },
   {
+    problemIcon: 'CloudRain',
     icon: 'Droplets',
     problem: '«Не сделали гидро- и пароизоляцию — появился конденсат и плесень»',
     solution: 'Гидро- и пароизоляция входят в технологию монтажа по умолчанию, а не как платная опция.',
   },
   {
-    icon: 'Wind',
+    problemIcon: 'Wind',
+    icon: 'Settings2',
     problem: '«Дует из створок, уплотнитель прилегает неплотно»',
     solution: 'Регулируем фурнитуру на объекте и проверяем прилегание уплотнителя при сдаче работ вместе с вами.',
   },
   {
+    problemIcon: 'FileWarning',
     icon: 'FileCheck',
     problem: '«В договоре не прописали материалы, сроки и гарантию»',
     solution: 'В договоре — конкретный профиль, этапы, сроки и гарантийные обязательства. Ничего «на словах».',
   },
   {
-    icon: 'ShieldAlert',
+    problemIcon: 'Building2',
+    icon: 'ShieldCheck',
     problem: '«Остеклили ветхий балкон без усиления — есть риск обрушения»',
     solution: 'Перед монтажом инженер оценивает состояние плиты и парапета, при необходимости усиливаем основание.',
   },
   {
+    problemIcon: 'PhoneOff',
     icon: 'Headset',
     problem: '«После сдачи работ мастер пропал, на гарантию не приезжает»',
     solution: 'Гарантия 10 лет официально закреплена в договоре, сервисная бригада выезжает по звонку в первый год бесплатно.',
   },
   {
+    problemIcon: 'Construction',
     icon: 'Trash2',
     problem: '«Не убрали мусор после монтажа»',
     solution: 'Вывоз строительного мусора и уборка после монтажа входят в стоимость работ.',
   },
   {
+    problemIcon: 'EyeOff',
     icon: 'Camera',
     problem: '«Не было понятно, на каком этапе находится заказ»',
     solution: 'Присылаем фотоотчёты по ключевым этапам — от замера до сдачи, вы всегда в курсе.',
@@ -620,7 +632,9 @@ const Index = () => {
             {PAIN_POINTS.map((p) => (
               <div key={p.problem} className="bg-card rounded-2xl p-5 sm:p-6 border border-border hover-lift">
                 <div className="flex items-start gap-2.5 mb-4 pb-4 border-b border-border">
-                  <Icon name="X" size={16} className="text-red-500 shrink-0 mt-0.5" />
+                  <span className="grid place-items-center w-7 h-7 rounded-full bg-red-500/10 text-red-500 shrink-0">
+                    <Icon name={p.problemIcon} size={14} />
+                  </span>
                   <p className="text-sm text-muted-foreground italic leading-relaxed">{p.problem}</p>
                 </div>
                 <div className="flex items-start gap-2.5">
