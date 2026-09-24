@@ -463,9 +463,6 @@ const Index = () => {
       <section id="top" className="relative pt-32 sm:pt-36 lg:pt-28 pb-12 sm:pb-20 grid-bg">
         <div className="container grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="animate-fade-in">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-xs sm:text-sm mb-4 sm:mb-5">
-              <Icon name="MapPin" size={14} /> Санкт-Петербург и Лен. область
-            </span>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08]">
               Меняем <span className="text-sky">холодное</span> остекление
               на <span className="text-accent">тёплое</span>
