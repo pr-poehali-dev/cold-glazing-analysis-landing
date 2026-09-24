@@ -426,13 +426,9 @@ const Index = () => {
           </a>
 
           {/* Desktop nav CTA */}
-          <a
-            href="tel:+79817773070"
-            className="hidden lg:flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors whitespace-nowrap"
-          >
-            <Icon name="PhoneCall" size={16} className="shrink-0" />
+          <span className="hidden lg:flex items-center text-sm font-semibold text-primary whitespace-nowrap">
             {NAV_CTA_TEXT}
-          </a>
+          </span>
 
           {/* Right side */}
           <div className="flex items-center gap-2 sm:gap-3">
@@ -454,20 +450,13 @@ const Index = () => {
               <Icon name="Phone" size={18} className="text-primary shrink-0" />
               <span className="hidden sm:inline">+7 (981) 777-30-70</span>
             </a>
-            <Button asChild size="sm" className="hidden md:flex rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange text-xs sm:text-sm">
-              <a href="#consult">Консультация</a>
-            </Button>
           </div>
         </div>
 
         {/* Mobile CTA bar */}
-        <a
-          href="tel:+79817773070"
-          className="lg:hidden flex items-center justify-center gap-2 border-t border-border bg-primary/5 px-4 py-2 text-center text-xs sm:text-sm font-semibold text-primary"
-        >
-          <Icon name="PhoneCall" size={14} className="shrink-0" />
+        <div className="lg:hidden flex items-center justify-center border-t border-border bg-primary/5 px-4 py-2 text-center text-xs sm:text-sm font-semibold text-primary">
           <span className="leading-tight">{NAV_CTA_TEXT}</span>
-        </a>
+        </div>
       </header>
 
       {/* === HERO === */}
