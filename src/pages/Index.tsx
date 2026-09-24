@@ -26,6 +26,69 @@ const ADVANTAGES = [
   { icon: 'Clock', title: 'Монтаж за 1 день', text: 'Стандартный балкон остекляем за один рабочий день без лишней грязи и шума.' },
 ];
 
+const PAIN_POINTS = [
+  {
+    icon: 'Receipt',
+    problem: '«В объявлении цена «от», а по факту сумма выросла в разы»',
+    solution: 'Фиксируем итоговую стоимость в договоре после замера — никаких скрытых доплат за «дополнительные работы».',
+  },
+  {
+    icon: 'Ruler',
+    problem: '«Замерщик не учёл трубу, выступ — рама не влезла, появились щели»',
+    solution: 'Инженер, а не менеджер, выезжает на замер и фиксирует все нюансы проёма в акте перед изготовлением.',
+  },
+  {
+    icon: 'Users',
+    problem: '«Менеджер, замерщик и монтажник говорят разное»',
+    solution: 'За вашим объектом закреплён один инженер-куратор — от заявки до сдачи работ, без «испорченного телефона».',
+  },
+  {
+    icon: 'Clock',
+    problem: '«Долго ждали ответа, сроки переносили, замерщик приезжал несколько раз»',
+    solution: 'Перезваниваем в течение 15 минут, замер — в согласованный день и час, без переносов.',
+  },
+  {
+    icon: 'Layers',
+    problem: '«Поставили материалы дешевле, чем обещали»',
+    solution: 'В договоре прописан точный профиль, фурнитура и толщина утеплителя — то, что подписали, то и монтируем.',
+  },
+  {
+    icon: 'Droplets',
+    problem: '«Не сделали гидро- и пароизоляцию — появился конденсат и плесень»',
+    solution: 'Гидро- и пароизоляция входят в технологию монтажа по умолчанию, а не как платная опция.',
+  },
+  {
+    icon: 'Wind',
+    problem: '«Дует из створок, уплотнитель прилегает неплотно»',
+    solution: 'Регулируем фурнитуру на объекте и проверяем прилегание уплотнителя при сдаче работ вместе с вами.',
+  },
+  {
+    icon: 'FileCheck',
+    problem: '«В договоре не прописали материалы, сроки и гарантию»',
+    solution: 'В договоре — конкретный профиль, этапы, сроки и гарантийные обязательства. Ничего «на словах».',
+  },
+  {
+    icon: 'ShieldAlert',
+    problem: '«Остеклили ветхий балкон без усиления — есть риск обрушения»',
+    solution: 'Перед монтажом инженер оценивает состояние плиты и парапета, при необходимости усиливаем основание.',
+  },
+  {
+    icon: 'Headset',
+    problem: '«После сдачи работ мастер пропал, на гарантию не приезжает»',
+    solution: 'Гарантия 10 лет официально закреплена в договоре, сервисная бригада выезжает по звонку в первый год бесплатно.',
+  },
+  {
+    icon: 'Trash2',
+    problem: '«Не убрали мусор после монтажа»',
+    solution: 'Вывоз строительного мусора и уборка после монтажа входят в стоимость работ.',
+  },
+  {
+    icon: 'Camera',
+    problem: '«Не было понятно, на каком этапе находится заказ»',
+    solution: 'Присылаем фотоотчёты по ключевым этапам — от замера до сдачи, вы всегда в курсе.',
+  },
+];
+
 const SERVICES = [
   { icon: 'PanelTop', title: 'Замена холодного на тёплое', price: 'от 4 900 ₽/м²', text: 'Демонтаж алюминия и установка тёплого профиля с двухкамерным стеклопакетом.' },
   { icon: 'Home', title: 'Тёплое остекление лоджий', price: 'от 5 400 ₽/м²', text: 'Профиль VEKA/Rehau/Melke 70 мм, энергосберегающее стекло, тёплый отлив и подоконник.' },
@@ -286,29 +349,6 @@ const PROCESS_STEPS = [
   },
 ];
 
-const DISCOUNTS = [
-  {
-    icon: 'Percent',
-    badge: 'Акция июля',
-    title: 'Скидка 10% при заказе до 31 июля',
-    desc: 'На любое тёплое остекление балкона или лоджии. Акция действует при подписании договора до конца месяца.',
-    cta: 'Записаться на замер',
-    color: 'from-accent to-orange-500',
-    deadline: 'Осталось мест: 6 из 10',
-    icon2: 'Flame',
-  },
-  {
-    icon: 'Gift',
-    badge: 'Подарок',
-    title: 'Утепление пола в подарок',
-    desc: 'При заказе серии «Уют» или «Зимний сад» — утепление пола пеноплексом 50 мм бесплатно. Экономия до 8 000 ₽.',
-    cta: 'Получить подарок',
-    color: 'from-primary to-sky',
-    deadline: 'До конца недели',
-    icon2: 'Clock',
-  },
-];
-
 const SERIES_PRESETS = [
   { seriesId: 1, label: 'Уют',        icon: 'Sofa',        area: 8,  profile: 0, extras: ['utep'] },
   { seriesId: 2, label: 'Кабинет',    icon: 'Monitor',     area: 6,  profile: 3, extras: ['floor'] },
@@ -326,24 +366,9 @@ const Index = () => {
   const [activeSeries, setActiveSeries] = useState<number | null>(null);
   const [heroSlide, setHeroSlide] = useState(0);
   const [processSlide, setProcessSlide] = useState(0);
-  const [timeLeft, setTimeLeft] = useState({ h: 23, m: 47, s: 12 });
 
   useEffect(() => {
     const t = setInterval(() => setHeroSlide((p) => (p + 1) % HERO_SLIDES.length), 4000);
-    return () => clearInterval(t);
-  }, []);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setTimeLeft((prev) => {
-        let { h, m, s } = prev;
-        s--;
-        if (s < 0) { s = 59; m--; }
-        if (m < 0) { m = 59; h--; }
-        if (h < 0) { h = 23; m = 59; s = 59; }
-        return { h, m, s };
-      });
-    }, 1000);
     return () => clearInterval(t);
   }, []);
 
@@ -606,6 +631,33 @@ const Index = () => {
                 </span>
                 <h3 className="font-display text-lg sm:text-xl font-semibold mb-2">{a.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{a.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === PAIN POINTS === */}
+      <section id="pain-points" className="py-14 sm:py-20">
+        <div className="container">
+          <SectionTitle eyebrow="Работаем без сюрпризов" title="Решаем главные проблемы клиентов при остеклении" />
+          <p className="text-center text-muted-foreground mt-3 mb-8 sm:mb-10 text-sm sm:text-base max-w-2xl mx-auto">
+            Мы изучили частые жалобы на подрядчиков по остеклению и выстроили процесс так, чтобы
+            ни одна из этих проблем не повторилась у вас
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {PAIN_POINTS.map((p) => (
+              <div key={p.problem} className="bg-card rounded-2xl p-5 sm:p-6 border border-border hover-lift">
+                <div className="flex items-start gap-2.5 mb-4 pb-4 border-b border-border">
+                  <Icon name="X" size={16} className="text-red-500 shrink-0 mt-0.5" />
+                  <p className="text-sm text-muted-foreground italic leading-relaxed">{p.problem}</p>
+                </div>
+                <div className="flex items-start gap-2.5">
+                  <span className="grid place-items-center w-7 h-7 rounded-full bg-accent/15 text-accent shrink-0">
+                    <Icon name={p.icon} size={14} />
+                  </span>
+                  <p className="text-sm font-medium leading-relaxed">{p.solution}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -1337,82 +1389,35 @@ const Index = () => {
       {/* === DISCOUNTS (4U: Urgent + Unique) === */}
       <section id="discounts" className="py-14 sm:py-20 bg-secondary/40">
         <div className="container">
-          <SectionTitle eyebrow="Специальные предложения" title="Акции и скидки" />
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0077FF] via-[#2287f5] to-primary text-white">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/3 translate-x-1/4" />
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/10 rounded-full translate-y-1/3 -translate-x-1/4" />
 
-          {/* Таймер */}
-          <div className="flex justify-center mt-5 mb-8">
-            <div className="inline-flex items-center gap-3 bg-primary text-white rounded-2xl px-6 py-3 shadow-glow-blue">
-              <Icon name="Timer" size={20} className="text-accent" />
-              <span className="text-sm font-medium">Акция июля заканчивается через:</span>
-              <div className="flex items-center gap-1 font-display text-xl font-bold">
-                <span className="bg-white/20 rounded-lg px-2 py-0.5 min-w-[2.5rem] text-center">{String(timeLeft.h).padStart(2,'0')}</span>
-                <span>:</span>
-                <span className="bg-white/20 rounded-lg px-2 py-0.5 min-w-[2.5rem] text-center">{String(timeLeft.m).padStart(2,'0')}</span>
-                <span>:</span>
-                <span className="bg-white/20 rounded-lg px-2 py-0.5 min-w-[2.5rem] text-center">{String(timeLeft.s).padStart(2,'0')}</span>
+            <div className="relative p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+              <div className="shrink-0 grid place-items-center w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white/15">
+                <VkIcon size={48} />
               </div>
-            </div>
-          </div>
-
-          {/* Карточки акций */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
-            {DISCOUNTS.map((d) => (
-              <div key={d.title} className={`relative rounded-3xl bg-gradient-to-br ${d.color} text-white overflow-hidden hover-lift`}>
-                {/* Декор */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
-
-                <div className="relative p-6 sm:p-7 flex flex-col h-full">
-                  <div className="flex items-start justify-between mb-4">
-                    <span className="grid place-items-center w-12 h-12 rounded-2xl bg-white/20">
-                      <Icon name={d.icon} size={22} />
-                    </span>
-                    <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-bold">
-                      {d.badge}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-xl font-bold mb-3 leading-tight">{d.title}</h3>
-                  <p className="text-white/85 text-sm leading-relaxed flex-1 mb-5">{d.desc}</p>
-
-                  <div className="flex items-center gap-2 mb-4 text-xs font-semibold">
-                    <Icon name={d.icon2} size={14} className="text-white/80" />
-                    <span className="text-white/80">{d.deadline}</span>
-                  </div>
-
-                  <Button asChild className="w-full rounded-xl bg-white text-foreground hover:bg-white/90 font-semibold h-11">
-                    <a href="#consult">{d.cta}</a>
-                  </Button>
-                </div>
+              <div className="flex-1 text-center lg:text-left">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 font-semibold text-xs sm:text-sm mb-4">
+                  <Icon name="Gift" size={15} /> Подарок за подписку
+                </span>
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3">
+                  Вступи в наше сообщество ВКонтакте
+                </h2>
+                <p className="text-white/85 text-sm sm:text-base leading-relaxed max-w-xl">
+                  И получи в подарок <strong className="text-white">чек-лист приёмки работ</strong> по замене
+                  остекления — что проверить перед оплатой, чтобы не платить дважды.
+                </p>
               </div>
-            ))}
-          </div>
-
-          {/* Фото + CTA-блок */}
-          <div className="mt-10 grid lg:grid-cols-2 gap-6 bg-card border border-border rounded-3xl overflow-hidden">
-            <img
-              src="https://cdn.poehali.dev/projects/a641e062-96ee-476e-88a9-0a00aae5111a/files/b6ac0747-8f4a-4af7-9980-74cbe3c3ff40.jpg"
-              alt="Бригада мастеров устанавливает тёплое остекление"
-              className="w-full h-64 lg:h-auto object-cover"
-            />
-            <div className="p-7 sm:p-10 flex flex-col justify-center">
-              <span className="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full bg-accent/15 text-accent text-sm font-semibold mb-4">
-                <Icon name="Flame" size={15} /> Горячее предложение
-              </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-bold mb-4 leading-tight">
-                Закажите замер сегодня — получите скидку 10% и подарок
-              </h3>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-6">
-                Только в июле: при подписании договора в день замера вы получаете скидку 10% на всю стоимость
-                работ и утепление пола в подарок. Акция ограничена — осталось <strong className="text-foreground">6 мест</strong> в этом месяце.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg" className="rounded-full bg-accent hover:bg-primary text-white shadow-glow-orange h-12 px-7">
-                  <a href="#consult">Записаться на замер со скидкой</a>
-                </Button>
-                <a href="tel:+79817773070" className="flex items-center justify-center gap-2 h-12 px-5 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all">
-                  <Icon name="Phone" size={17} /> Позвонить
+              <Button
+                asChild
+                size="lg"
+                className="shrink-0 rounded-full bg-white text-primary hover:bg-white/90 font-semibold h-13 sm:h-14 px-7 sm:px-8 text-base shadow-lg"
+              >
+                <a href="https://vk.ru/zamena_ostekleniya_spb" target="_blank" rel="noopener noreferrer">
+                  <VkIcon size={20} /> <span className="ml-2">Вступить и получить</span>
                 </a>
-              </div>
+              </Button>
             </div>
           </div>
         </div>
@@ -1536,7 +1541,7 @@ const Index = () => {
             <Icon name="Snowflake" size={20} /> Ленинградские Фасады
           </div>
           <p className="text-white/70 text-xs sm:text-sm">
-            ИНН: 7800000000
+            ИНН: 531801753258
           </p>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
