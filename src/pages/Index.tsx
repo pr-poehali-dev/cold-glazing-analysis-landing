@@ -469,6 +469,7 @@ const Index = () => {
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08]">
               Меняем <span className="text-sky">холодное</span> остекление
               на <span className="text-accent">тёплое</span>
+              <span className="sr-only"> балконов и лоджий в Санкт-Петербурге</span>
             </h1>
 
             {/* УТП-слайдер по профилям */}
