@@ -1561,7 +1561,7 @@ const Index = () => {
           href="tel:+79817773070"
           className="flex items-center justify-center gap-2 w-full h-14 rounded-2xl bg-accent text-white font-display font-bold text-base shadow-glow-orange shadow-lg"
         >
-          <Icon name="Phone" size={20} /> Позвонить бесплатно
+          <Icon name="Phone" size={20} /> Звонок инженеру
         </a>
       </div>
 
